@@ -487,6 +487,10 @@ footer {
   background-image: url("../img/camera.png");
   background-color: #ff9245; }
 
+.new-task__icon--courier {
+  background-image: url("../img/man-running.png");
+  background-color: #00c76a; }
+
 .new-task__price {
   font-weight: 700;
   font-size: 30px;
@@ -582,9 +586,7 @@ footer {
 
 .search-task__categories {
   max-width: 740px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
@@ -896,7 +898,13 @@ footer {
 
 .pagination__item a {
   color: #ffffff;
-  text-decoration: none; }
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 1em;
+  margin: -1em;
+ }
 
 .new-task__pagination-list li:first-child,
 .new-task__pagination-list li:last-child {
@@ -2569,4 +2577,18 @@ footer {
 .guest {
   margin: 0 !important;
 }
-/*# sourceMappingURL=style.css.map */
+
+.absolute-button {
+  top: 0;
+  position: absolute;
+  left: 0px;
+}
+
+.dec-none {
+  color: white;
+  text-decoration: none;
+}
+
+.relative-container {
+  position: relative;
+}

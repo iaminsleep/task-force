@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('budget');
             $table->date('deadline');
+            $table->tinyInteger('remote')->default(0);
             $table->timestamps();
         });
     }

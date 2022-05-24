@@ -57,13 +57,16 @@
                         @endauth
                     </ul>
                 </div>
-                <div class="header__town">
-                    <select class="multiple-select input town-select" size="1" name="city_id">
+                <form method="get" action="/search" class="header__town">
+                    <select class="multiple-select input town-select" size="1" name="city_id" onchange="javascript:this.form.submit()">
+                        <option disabled selected>Все города</option>
                         @foreach($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            <option value="{{ $city->id }}">
+                                {{ $city->name }}
+                            </option>
                         @endforeach
                     </select>
-                </div>
+                </form>
                 <div class="header__lightbulb"></div>
                 <div class="lightbulb__pop-up">
                     <h3>Новые события</h3>

@@ -13,7 +13,8 @@ class PageController extends Controller
 
     public function allTasks() 
     {
-        $tasks = Task::orderBy('created_at', 'ASC')->get();
+        $tasks = Task::orderBy('created_at', 'ASC')->paginate(4);
+        
         return view('browse', ['tasks' => $tasks]);
     }
 }

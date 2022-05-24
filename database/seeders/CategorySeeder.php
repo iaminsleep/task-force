@@ -23,6 +23,7 @@ class CategorySeeder extends Seeder
             ['id' => 6, 'name' => 'Ремонт', 'alias' => 'repair'],
             ['id' => 7, 'name' => 'Хозяйство', 'alias' => 'flat'],
             ['id' => 8, 'name' => 'Косметика', 'alias' => 'beauty'],
+            ['id' => 9, 'name' => 'Курьерские услуги', 'alias' => 'courier'],
         ];
 
         DB::table('category')->insert($categories);

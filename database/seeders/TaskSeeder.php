@@ -18,16 +18,6 @@ class TaskSeeder extends Seeder
 
     public function run()
     {
-        $current_time = Carbon::now()->timezone('Europe/Moscow');
-
-        $deadline_30_days = $current_time->addSeconds(2592000)->timezone('Europe/Moscow');
-
-        $deadline_1_days = $current_time->addSeconds(86400)->timezone('Europe/Moscow');
-        $deadline_2_days = $current_time->addSeconds(172800)->timezone('Europe/Moscow');
-        $deadline_3_days = $current_time->addSeconds(259200)->timezone('Europe/Moscow');
-        $deadline_5_days = $current_time->addSeconds(432000)->timezone('Europe/Moscow');
-        $deadline_7_days = $current_time->addSeconds(604800)->timezone('Europe/Moscow');
-
         $tasks = [
             [
                 'title' => 'Перевести войну и мир на клингонский',
@@ -35,21 +25,23 @@ class TaskSeeder extends Seeder
                 'category_id' => 3,
                 'city_id' => 1,
                 'user_id' => 1,
-                'location' => 'Востряковский проезд, 16к2',
+                'location' => 'Востряковский проезд, 17к4',
                 'budget' => 35000,
-                'created_at' => $current_time,
-                'deadline' => $deadline_30_days,
+                'remote' => 1,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
             ],
             [
                 'title' => 'Убраться в квартире после вписки',
-                'description' => 'Предупреждаю, зрелище будет не из приятных. Деньгами не обижу.',
+                'description' => 'Предупреждаю, вас будет ждать не самое приятное зрелище. Щедрая оплата за выполненую работу.',
                 'category_id' => 1,
                 'city_id' => 2,
                 'user_id' => 2,
                 'location' => 'Улица Салова, 57к5',
                 'budget' => 3500,
-                'created_at' => $current_time,
-                'deadline' => $deadline_1_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(86400)->timezone('Europe/Moscow'), //1 day
             ],
             [
                 'title' => 'Перевезти груз на новое место',
@@ -59,19 +51,21 @@ class TaskSeeder extends Seeder
                 'user_id' => 3,
                 'location' => 'Российская улица, 72/1к1',
                 'budget' => 4000,
-                'created_at' => $current_time,
-                'deadline' => $deadline_1_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(86400)->timezone('Europe/Moscow'), //1 day
             ],
             [
-                'title' => 'Починить ноутбук',
-                'description' => 'На сайте увидела, что я выиграла в лотерею. Для выигрыша нужно было скачать программу, я её скачала но ноутбук почему-то перестал включаться. Есть здесь программисты которые могут вернуть всё как было?!',
+                'title' => 'Удалить вирусы на ноутбуке',
+                'description' => 'На сайте увидела, что я выиграла в лотерею. Для получения выигрыша нужно было скачать программу, я её скачала но ноутбук почему-то перестал включаться.',
                 'category_id' => 2,
                 'city_id' => 4,
                 'user_id' => 4,
                 'location' => 'Улица Карла Либкнехта, 153',
                 'budget' => 1700,
-                'created_at' => $current_time,
-                'deadline' => $deadline_3_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
             ],
             [
                 'title' => 'Провести фотосессию на день рождения',
@@ -81,19 +75,21 @@ class TaskSeeder extends Seeder
                 'user_id' => 5,
                 'location' => 'Проспект Красного Знамени, 114',
                 'budget' => 4500,
-                'created_at' => $current_time,
-                'deadline' => $deadline_2_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(604800)->timezone('Europe/Moscow'), //7 days
             ],
             [
                 'title' => 'Починить дверь в автомобиле',
-                'description' => 'Попал в небольшое ДТП, отвалилась дверь (не спрашивайте как). Сдавать в сервисный центр будет дорого, может кто-то сможет прикрутить её обратно за щедрую оплату?',
+                'description' => 'Попал в небольшое ДТП, отвалилась дверь. Сдавать в сервисный центр будет дорого, может кто-то сможет прикрутить её обратно? Деньгами не обижу!',
                 'category_id' => 6,
                 'city_id' => 6,
                 'user_id' => 6,
                 'location' => 'Улица Фрунзе, 38',
                 'budget' => 10000,
-                'created_at' => $current_time,
-                'deadline' => $deadline_7_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(604800)->timezone('Europe/Moscow'), //7 days
             ],
             [
                 'title' => 'Покрасить стены в комнате',
@@ -103,19 +99,57 @@ class TaskSeeder extends Seeder
                 'user_id' => 7,
                 'location' => 'Переулок Островского, 1А',
                 'budget' => 6000,
-                'created_at' => $current_time,
-                'deadline' => $deadline_5_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(432000)->timezone('Europe/Moscow'), //5 days
             ],
             [
                 'title' => 'Сделать маникюр',
-                'description' => 'Делаю маникюр в первый раз, хочу покрасить ногти в цвет малахита. Есть здесь опытные маникюрши?',
+                'description' => 'Делаю маникюр в первый раз, хочу покрасить ногти в цвет малахита.',
                 'category_id' => 8,
                 'city_id' => 8,
                 'user_id' => 3,
                 'location' => 'Путевая улица, 8В',
                 'budget' => 1900,
-                'created_at' => $current_time,
-                'deadline' => $deadline_3_days,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(259200)->timezone('Europe/Moscow'), //3 days
+            ],   
+            [
+                'title' => 'Доставить пряники в детский сад',
+                'description' => 'Внимание! Очень хрупкий товар. Требуется аккуратный пеший курьер, который сможет доставить посылку без повреждений. Можно доставить и на велосипеде, но с гарантией безопасности от курьера.',
+                'category_id' => 9,
+                'city_id' => 2,
+                'user_id' => 2,
+                'location' => 'Гатчинское шоссе, 6к3',
+                'budget' => 800,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(172800)->timezone('Europe/Moscow'), //2 days
+            ],
+            [
+                'title' => 'Тамада на свадьбу',
+                'description' => 'Ищу весёлого, энергичного и обаятельного ведущего на свадьбу, который будет проводить конкурсы, говорить тосты и развлекать гостей! Деньги плачу большие, с вас главное - выложиться на все 100% и провести идеальную свадьбу!',
+                'category_id' => 5,
+                'city_id' => 1,
+                'user_id' => 1,
+                'location' => 'Михневская улица, 8',
+                'budget' => 19000,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
+            ],
+            [
+                'title' => 'Привезти мебель на дом',
+                'description' => 'Заказали товары из Leroy Merlen, но своей машины нет, да и если бы была, то два дивана и шкаф не поместились бы. Ищем водителя с грузовиком, который сможет доставить всё это в наш дом.',
+                'category_id' => 4,
+                'city_id' => 4,
+                'user_id' => 4,
+                'location' => 'Улица Набережная Иркута, 1',
+                'budget' => 2100,
+                'remote' => 0,
+                'created_at' => Carbon::now()->timezone('Europe/Moscow'),
+                'deadline' => Carbon::now()->addSeconds(172800)->timezone('Europe/Moscow'), //2 days
             ],
         ];
         DB::table('task')->insert($tasks);

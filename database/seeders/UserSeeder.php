@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'name' => 'Келвин',
+                'name' => 'Стас',
                 'email' => 'kelvin@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 1,
@@ -72,12 +72,12 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'name' => 'Дэвин',
+                'name' => 'Егор',
                 'email' => 'devin@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 3,
                 'rating' => 4.5,
-                'avatar' => 'avatar-5.png',
+                'avatar' => 'avatar-5.jpg',
             ],
         ];
         DB::table('users')->insert($users);

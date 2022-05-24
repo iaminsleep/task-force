@@ -20,6 +20,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/browse', 'PageController@allTasks')->name('browse');
     Route::get('task/{id}', 'TaskController@show')->name('task.show');
+    Route::get('/search', 'TaskController@search')->name('search');
 
     Route::group(['middleware' => ['auth']], function() {
 
