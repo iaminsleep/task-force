@@ -31,8 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/create', 'TaskController@createPage')->name('task.create-page');
         Route::post('/create', 'TaskController@create')->name('task.create');
 
-        Route::get('/messages', [ChatController::class, "fetchMessages"]);
-        Route::post('/messages', [ChatController::class, "sendMessage"]);
+        Route::get('/messages/{taskId}', [ChatController::class, "fetchMessages"]);
+        Route::post('/messages/{taskId}', [ChatController::class, "sendMessage"]);
 
     });
 

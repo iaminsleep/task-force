@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if(!app()->runningInConsole()) {
+            
             Paginator::useBootstrap();
 
             $categories = Category::all()->sortBy('id');

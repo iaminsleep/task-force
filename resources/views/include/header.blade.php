@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="<?php echo url('/css/normalize.css')?>"/>
     <link rel="stylesheet" href="<?php echo url('/css/style.css')?>"/>
     <link rel="icon" href="<?php echo url('/img/taskforce-icon.png')?>"/>
+    @if(\Request::route()->getName() === 'task.show')
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=3b001707-d3da-49cd-ae1b-bdd710add366" type="text/javascript"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endif
 </head>
 <body>
     <div class="table-layout">
@@ -86,7 +90,7 @@
                 @auth
                     <div class="header__account">
                         <a class="header__account-photo">
-                            <img src="<?php echo url('/img/user-photo.png')?>"
+                            <img src="/img/avatar/{{ Auth::user()->avatar }}"
                                 width="43" height="44"
                                 alt="Аватар пользователя {{ Auth::user()->name }}">
                         </a>

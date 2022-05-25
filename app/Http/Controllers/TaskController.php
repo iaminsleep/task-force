@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use YaGeo;
 
 use App\Models\Category;
 use App\Models\Task;
@@ -26,8 +27,40 @@ class TaskController extends Controller
     }
 
     public function show($id) {
+        $auth_user_id = Auth::user()->id ?? null;
+
         $task = Task::findOrFail($id);
-        return view('task-page', ['task' => $task]);
+
+        $time_difference = Carbon::parse($task->created_at)->diffForHumans();
+        $deadline = Carbon::parse($task->deadline)->format('d-m-Y');
+
+        $task_amount = $task->user->tasks->count();
+        if($task_amount === 1) {
+            $task_amount = $task_amount.' задание';
+        } else if ($task_amount > 1 && $task_amount <= 4) {
+            $task_amount = $task_amount.' задания';
+        } else {
+            $task_amount = $task_amount.' заданий';
+        }
+
+        $city_name = $task->city->name;
+        $city_address = $task->location;
+        $geo_data = YaGeo::setQuery("$city_name, $city_address")->load();
+        $latitude = $geo_data->getResponse()->getLatitude();
+        $longitude = $geo_data->getResponse()->getLongitude();
+
+        $time_on_website = str_replace('назад', 'на сайте', Carbon::parse($task->user->created_at)->diffForHumans());
+
+        return view('task-page', 
+        [
+            'auth_user_id' => $auth_user_id,
+            'task' => $task, 
+            'time_difference' => $time_difference, 
+            'deadline' => $deadline,
+            'task_amount' => $task_amount,
+            'time_on_website' => $time_on_website,
+            'coordinates' => [$latitude, $longitude],
+        ]);
     }
 
     public function create(Request $request) 
@@ -70,10 +103,12 @@ class TaskController extends Controller
         $period = $request['time'];
         $name = $request['name'];
         $city_id = $request['city_id'];
+        $category_id = $request['category_id'];
 
         if(is_null($categories) && is_null($is_remote) 
         && is_null($is_no_responses) && is_null($period) 
-        && is_null($name) && is_null($city_id)) return redirect('/browse');
+        && is_null($name) && is_null($city_id) && is_null($category_id)) 
+        return redirect('/browse');
         
         $tasks = Task::all();
         
@@ -93,6 +128,8 @@ class TaskController extends Controller
             return $query->where('title', 'LIKE', '%'.$name.'%');
         })->when($city_id, function($query, $city_id) {
             return $query->where('city_id', $city_id);
+        })->when($category_id, function($query, $category_id) {
+            return $query->where('category_id', $category_id);
         });
 
         $tasks = $tasks->paginate(4);

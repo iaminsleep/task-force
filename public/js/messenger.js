@@ -3,16 +3,16 @@
 Vue.component('chat', {
   props: ['task'],
   template: `<div><h3>Переписка</h3>
-             <div class="chat__overflow">
-               <div class="chat__message" v-for="item in messages" :class="{'chat__message--out': item.is_mine}">
-                <p class="chat__message-time">{{ item.published_at }}</p>
+             <div class="chat__overflow" id="messagebox">
+               <div class="chat__message" v-for="item in messages" :class="{'chat__message--out': item.user_id === this.authUserId}">
+                <p class="chat__message-time">{{ Intl.DateTimeFormat('ru-RU', { dateStyle: 'short', timeStyle: 'medium' }).format(new Date(item.created_at)) }}</p>
                 <p class="chat__message-text">{{ item.message }}</p>
                </div>
               </div>
               <p class="chat__your-message">Ваше сообщение</p>
               <form class="chat__form">
                   <textarea class="input textarea textarea-chat" rows="2" name="message-text"
-                  v-model="message" placeholder="Текст сообщения">{{this.message}}</textarea>
+                  v-model="message" placeholder="Текст сообщения">{{ this.message }}</textarea>
                   <button class="button chat__button" v-on:click="sendMessage" type="button">Отправить</button>
               </form></div>`,
   mounted: function() {
@@ -20,24 +20,34 @@ Vue.component('chat', {
       console.error("Не передан идентификатор задания (атрибут task) в теге 'chat'")
     }
     else {
-      this.api_url = 'http://taskforce/messages';
+      this.api_url = 'http://taskforce/messages/' + this.task;
       this.getMessages();
     }
+  },
+  updated: function() {
+    const msgBox = document.getElementById('messagebox');
+    msgBox.scrollTop = msgBox.scrollHeight;
   },
   methods: {
     sendMessage: function() {
       fetch(this.api_url, {
         method: 'POST',
-        body: JSON.stringify({message: this.message, task_id: this.task})
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": this.csrf_token,
+        },
+        body: JSON.stringify({message: this.message})
       })
       .then(result => {
         if (result.status !== 201) {
           return Promise.reject(new Error('Запрошенный ресурс не существует'));
         }
-
+        
         return result.json();
       })
       .then(msg => {
+        const msgBox = document.getElementById('messagebox');
+        msgBox.scrollTop = msgBox.scrollHeight;
         this.messages.push(msg);
         this.message = null;
       })
@@ -48,11 +58,9 @@ Vue.component('chat', {
     getMessages: function () {
       fetch(this.api_url)
       .then(result => {
-        console.error(result);
         if (result.status !== 200) {
           return Promise.reject(new Error('Запрошенный ресурс не существует'));
         }
-
         return result.json();
       })
       .then(messages => {
@@ -67,7 +75,9 @@ Vue.component('chat', {
     return {
       messages: [],
       api_url: null,
-      message: null
+      message: null,
+      csrf_token: document.head.querySelector('meta[name="csrf-token"]').content, //retrieve csrf token from head tag
+      user_id: authUserId,
     }
   }
 });

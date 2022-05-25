@@ -18,9 +18,9 @@ class ChatController extends Controller
      *
      * @return Message
      */
-    public function fetchMessages()
+    public function fetchMessages($taskId)
     {
-        return Message::with('user')->get();
+        return Message::with('user')->where('task_id', $taskId)->get();
     }
 
     /**
@@ -30,15 +30,15 @@ class ChatController extends Controller
      * @return Response
      */
 
-    public function sendMessage(Request $request)
+    public function sendMessage(Request $request, $taskId)
     {
         $message = new Message();
-        $message->message = request('message');
-        $message->task_id = request('task_id');
+        $message->message = $request['message'];
+        $message->task_id = $taskId;
         $message->user_id = Auth::user()->id;
 
         $message->save();
 
-        return ['status' => 'Message Sent!'];
+        return response($message, 201);
     }
 }

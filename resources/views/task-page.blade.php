@@ -8,8 +8,11 @@
                             <div class="content-view__headline">
                                 <h1>{{ $task->title }}</h1>
                                 <span>Размещено в категории
-                                    <a href="#" class="link-regular">{{ $task->category->name }}</a>
-                                    25 минут назад</span>
+                                    <a href="/search?category_id={{ $task->category->id }}" class="link-regular">
+                                        {{ $task->category->name }}
+                                    </a>
+                                    {{ $time_difference }}
+                                </span>
                             </div>
                             <b class="new-task__price new-task__price--clean content-view-price">{{ $task->budget }}<b> ₽</b></b>
                             <div class="new-task__icon new-task__icon--clean content-view-icon"></div>
@@ -27,20 +30,19 @@
                             <h3 class="content-view__h3">Расположение</h3>
                             <div class="content-view__location-wrapper">
                                 <div class="content-view__map">
-                                    <a href="#"><img src="<?php echo url('/img/map.jpg')?>" width="361" height="292"
-                                                     alt="{{ $task->location }}"></a>
+                                    <div id="map"></div>
                                 </div>
                                 <div class="content-view__address">
                                     <span class="address__town">{{ $task->city->name }}</span><br>
                                     <span>{{ $task->location }}</span>
-                                    <p>Срок выполнения: {{ $task->deadline }}</p>
+                                    <p>Срок выполнения: {{ $deadline }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="content-view__action-buttons">
                         @auth
-                            @if(Auth::user()->id === $task->user->id)
+                            @if($auth_user_id === $task->user->id)
                                 <button class="button button__big-color request-button open-modal"
                                 type="button" data-for="complete-form">Завершить</button>
                             @else
@@ -54,9 +56,13 @@
                 </div>
                 <div class="content-view__feedback">
                     <h2>Отклики <span>({{ $task->feedbacks->count() }})</span></h2>
-                    @foreach($task->feedbacks as $feedback)
-                        <x-feedback :feedback="$feedback"></x-feedback>
-                    @endforeach
+                    @if($task->feedbacks->count() > 0)
+                        @foreach($task->feedbacks as $feedback)
+                            <x-feedback :data="['feedback' => $feedback, 'auth_user_id' => $auth_user_id]"></x-feedback>
+                        @endforeach
+                    @else
+                        <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
+                    @endif
                 </div>
             </section>
             <section class="connect-desk">
@@ -64,12 +70,15 @@
                     <div class="profile-mini__wrapper">
                         <h3>Заказчик</h3>
                         <div class="profile-mini__top">
-                            <img src="<?php echo url('/img/man-brune.jpg')?>" width="62" height="62" alt="Аватар заказчика">
+                            <img src="/img/avatar/{{ $task->user->avatar }}" width="62" height="62" alt="Аватар заказчика">
                             <div class="profile-mini__name five-stars__rate">
                                 <p>{{ $task->user->name }}</p>
                             </div>
                         </div>
-                        <p class="info-customer"><span>12 заданий</span><span class="last-">2 года на сайте</span></p>
+                        <p class="info-customer">
+                            <span>{{ $task_amount }}</span>
+                            <span class="last-">{{ $time_on_website }}</span>
+                        </p>
                         <a href="#" class="link-regular">Смотреть профиль</a>
                     </div>
                 </div>
@@ -80,9 +89,43 @@
         </div>
     </main>
     @auth
+        @if($auth_user_id === $task->user->id)
+            <x-completion-form></x-completion-form>
+        @else
+            <x-response-form></x-response-form>
+            <x-refusal-form></x-refusal-form>
+        @endif
         <x-messenger></x-messenger>
     @endauth
     @guest
         @include('auth.signin')
     @endguest
+    <script type="text/javascript">
+        ymaps.ready(init); 
+        var myMap;
+        const latitude = {!! json_encode($coordinates[0]); !!}; // Способ подключения php координаты в js
+        const longitude = @json($coordinates[1]); // Современный способ подключения php координаты в js
+        
+        function init() {
+
+            myMap = new ymaps.Map("map", {
+                center: [latitude, longitude], // Координаты центра карты
+                zoom: 16 // Маштаб карты
+            }); 
+        
+            myMap.controls.add(
+                new ymaps.control.ZoomControl()  // Добавление элемента управления картой
+            ); 
+        
+            myPlacemark = new ymaps.Placemark([latitude, longitude], { // Координаты метки объекта
+                balloonContent: "<div class='ya_map'>Место встречи</div>" // Подсказка метки
+            }, {
+                preset: "twirl#redDotIcon" // Тип метки
+            });
+            
+            myMap.geoObjects.add(myPlacemark); // Добавление метки
+            myPlacemark.balloon.open(); // Открытие подсказки метки
+            
+        };    
+    </script>
 @include('include.footer')
