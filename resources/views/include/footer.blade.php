@@ -2,7 +2,7 @@
                 <div class="main-container page-footer__container">
                     <div class="page-footer__info">
                         <p class="page-footer__info-copyright">
-                            © 2019, ООО «ТаскФорс»
+                            © 2022, ООО «ТаскФорс»
                             Все права защищены
                         </p>
                         <p class="page-footer__info-use">
@@ -13,19 +13,19 @@
                     <div class="page-footer__links">
                         <ul class="links__list">
                             <li class="links__item">
-                                <a href="">Задания</a>
+                                <a href="{{ route('browse.page') }}">Задания</a>
                             </li>
                             <li class="links__item">
-                                <a href="{{route('account')}}">Мой профиль</a>
+                                <a href="{{ route('account.page') }}">Мой профиль</a>
                             </li>
                             <li class="links__item">
                                 <a href="">Исполнители</a>
                             </li>
                             <li class="links__item">
-                                <a href="">Регистрация</a>
+                                <a href="{{ route('register.page') }}">Регистрация</a>
                             </li>
                             <li class="links__item">
-                                <a href="{{route('task.create-page')}}">Создать задание</a>
+                                <a href="{{ route('task-create.page') }}">Создать задание</a>
                             </li>
                             <li class="links__item">
                                 <a href="">Справка</a>
@@ -43,7 +43,12 @@
                 </div>
             </footer>
             <div class="overlay"></div>
+            <!-- Scripts -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data.js"></script>
             <script src="<?php echo url('public/js/main.js')?>"></script>
+            <script src="<?php echo url('public/js/timezone.js')?>" async></script>
+            <!-- /Scripts -->
         </div>
     </body>
 </html>

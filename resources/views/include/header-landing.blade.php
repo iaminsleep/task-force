@@ -45,7 +45,7 @@
                         <a class="open-modal" data-for="enter-form">
                             <span class="header__account-enter">Вход</span>
                         </a> или
-                        <a href="{{route('register.page')}}" class="header__account-registration">
+                        <a href="{{ route('register.page') }}" class="header__account-registration">
                             Регистрация
                         </a>
                     @endguest

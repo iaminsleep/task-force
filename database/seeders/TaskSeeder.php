@@ -29,7 +29,7 @@ class TaskSeeder extends Seeder
                 'budget' => 35000,
                 'remote' => 1,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
+                'deadline' => Carbon::now()->addSeconds(2592000), //30 days
             ],
             [
                 'title' => 'Убраться в квартире после вписки',
@@ -41,7 +41,7 @@ class TaskSeeder extends Seeder
                 'budget' => 3500,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(86400)->timezone('Europe/Moscow'), //1 day
+                'deadline' => Carbon::now()->addSeconds(86400), //1 day
             ],
             [
                 'title' => 'Перевезти груз на новое место',
@@ -53,7 +53,7 @@ class TaskSeeder extends Seeder
                 'budget' => 4000,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(86400)->timezone('Europe/Moscow'), //1 day
+                'deadline' => Carbon::now()->addSeconds(86400), //1 day
             ],
             [
                 'title' => 'Удалить вирусы на ноутбуке',
@@ -65,7 +65,7 @@ class TaskSeeder extends Seeder
                 'budget' => 1700,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
+                'deadline' => Carbon::now()->addSeconds(2592000), //30 days
             ],
             [
                 'title' => 'Провести фотосессию на день рождения',
@@ -77,7 +77,7 @@ class TaskSeeder extends Seeder
                 'budget' => 4500,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(604800)->timezone('Europe/Moscow'), //7 days
+                'deadline' => Carbon::now()->addSeconds(604800), //7 days
             ],
             [
                 'title' => 'Починить дверь в автомобиле',
@@ -89,7 +89,7 @@ class TaskSeeder extends Seeder
                 'budget' => 10000,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(604800)->timezone('Europe/Moscow'), //7 days
+                'deadline' => Carbon::now()->addSeconds(604800), //7 days
             ],
             [
                 'title' => 'Покрасить стены в комнате',
@@ -101,7 +101,7 @@ class TaskSeeder extends Seeder
                 'budget' => 6000,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(432000)->timezone('Europe/Moscow'), //5 days
+                'deadline' => Carbon::now()->addSeconds(432000), //5 days
             ],
             [
                 'title' => 'Сделать маникюр',
@@ -113,7 +113,7 @@ class TaskSeeder extends Seeder
                 'budget' => 1900,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(259200)->timezone('Europe/Moscow'), //3 days
+                'deadline' => Carbon::now()->addSeconds(259200), //3 days
             ],   
             [
                 'title' => 'Доставить пряники в детский сад',
@@ -125,7 +125,7 @@ class TaskSeeder extends Seeder
                 'budget' => 800,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(86400)->timezone('Europe/Moscow'), //1 day
+                'deadline' => Carbon::now()->addSeconds(86400), //1 day
             ],
             [
                 'title' => 'Тамада на свадьбу',
@@ -137,7 +137,7 @@ class TaskSeeder extends Seeder
                 'budget' => 19000,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
+                'deadline' => Carbon::now()->addSeconds(2592000), //30 days
             ],
             [
                 'title' => 'Привезти мебель на дом',
@@ -149,7 +149,7 @@ class TaskSeeder extends Seeder
                 'budget' => 3400,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(172800)->timezone('Europe/Moscow'), //2 days
+                'deadline' => Carbon::now()->addSeconds(172800), //2 days
             ],
             [
                 'title' => 'Празднование ДР',
@@ -161,7 +161,7 @@ class TaskSeeder extends Seeder
                 'budget' => 8100,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(2592000)->timezone('Europe/Moscow'), //30 days
+                'deadline' => Carbon::now()->addSeconds(2592000), //30 days
             ],
             [
                 'title' => 'Убраться в квартире',
@@ -173,7 +173,7 @@ class TaskSeeder extends Seeder
                 'budget' => 4480,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(432000)->timezone('Europe/Moscow'), //5 days
+                'deadline' => Carbon::now()->addSeconds(432000), //5 days
             ],
             [
                 'title' => 'Офисный переезд',
@@ -185,7 +185,7 @@ class TaskSeeder extends Seeder
                 'budget' => 12200,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(259200)->timezone('Europe/Moscow'), //3 days
+                'deadline' => Carbon::now()->addSeconds(259200), //3 days
             ],
             [
                 'title' => 'Подключить принтер',
@@ -197,7 +197,7 @@ class TaskSeeder extends Seeder
                 'budget' => 3850,
                 'remote' => 0,
                 'created_at' => Carbon::now()->timezone('Europe/Moscow'),
-                'deadline' => Carbon::now()->addSeconds(86400)->timezone('Europe/Moscow'), //1 day
+                'deadline' => Carbon::now()->addSeconds(86400), //1 day
             ],
         ];
         DB::table('task')->insert($tasks);

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<?php echo url('/css/normalize.css')?>"/>
     <link rel="stylesheet" href="<?php echo url('/css/style.css')?>"/>
     <link rel="icon" href="<?php echo url('/img/taskforce-icon.png')?>"/>
-    @if(\Request::route()->getName() === 'task.show')
+    @if(\Request::route()->getName() === 'task.page')
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=3b001707-d3da-49cd-ae1b-bdd710add366" type="text/javascript"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @endif
@@ -46,17 +46,17 @@
                 <div class="header__nav">
                     <ul class="header-nav__list site-list">
                         <li class="site-list__item site-list__item--active">
-                            <a href="{{ route('browse') }}">Задания</a>
+                            <a href="{{ route('browse.page') }}">Задания</a>
                         </li>
                         <li class="site-list__item">
                             <a href="#">Исполнители</a>
                         </li>
                         @auth
                             <li class="site-list__item">
-                            <a href="{{ route('task.create-page') }}">Создать задание</a>
+                            <a href="{{ route('task-create.page') }}">Создать задание</a>
                             </li>
                             <li class="site-list__item">
-                                <a href="{{ route('account') }}">Мой профиль</a>
+                                <a href="{{ route('account.page') }}">Мой профиль</a>
                             </li>
                         @endauth
                     </ul>

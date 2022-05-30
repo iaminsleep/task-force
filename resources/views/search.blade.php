@@ -1,7 +1,7 @@
 @include('include.header')
     <main class="page-main">
         <div class="main-container page-container relative-container">
-            <a class="dec-none" href="{{ route('browse')}}">
+            <a class="dec-none" href="{{ route('browse.page')}}">
               <button class="button absolute-button"><< Назад</button>
             </a> 
             <section class="new-task">   

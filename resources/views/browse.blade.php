@@ -19,14 +19,16 @@
                         <fieldset class="search-task__categories">
                             <legend>Категории</legend>
                             @foreach($categories as $category)
-                                <input class="visually-hidden checkbox__input" id="{{ $category->id }}" type="checkbox" name="category[]" value="{{ $category->id }}"/>
+                                <input class="visually-hidden checkbox__input" id="{{ $category->id }}" type="checkbox" 
+                                name="category[]" value="{{ $category->id }}"/>
                                 <label for="{{ $category->id }}">{{ $category->name }}</label>
                             @endforeach
                         </fieldset>
                         <fieldset class="search-task__categories">
                             <legend>Дополнительно</legend>
                             @foreach($optional_filters as $optional_filter)
-                                <input class="visually-hidden checkbox__input" id="{{ $optional_filter['alias'] }}" type="checkbox" name="{{ $optional_filter['alias'] }}"/>
+                                <input class="visually-hidden checkbox__input" id="{{ $optional_filter['alias'] }}" 
+                                type="checkbox" name="{{ $optional_filter['alias'] }}"/>
                                 <label for="{{ $optional_filter['alias'] }}">{{ $optional_filter['name'] }}</label>
                             @endforeach
                         </fieldset>
@@ -38,7 +40,8 @@
                                 @endforeach
                         </select>
                         <label class="search-task__name" for="search">Поиск по названию</label>
-                            <input class="input-middle input" id="search" type="search" name="name" placeholder="Перевести книгу" autocomplete="off">
+                        <input class="input-middle input" id="search" type="search" name="name" 
+                        placeholder="Перевести книгу" autocomplete="off" value="">
                         <button class="button" type="submit">Искать</button>
                     </form>
                 </div>

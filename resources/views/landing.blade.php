@@ -8,7 +8,7 @@
                    У нас вы быстро найдёте исполнителя для любой жизненной ситуации?<br>
                    Быстро, безопасно и с гарантией. Просто, как раз, два, три. </p>
                @guest
-                    <a href="{{route('register.page')}}"><button class="button">Создать аккаунт</button></a>
+                    <a href="{{ route('register.page') }}"><button class="button">Создать аккаунт</button></a>
                @endguest
            </div>
            <div class="landing-center">
@@ -94,70 +94,42 @@
            <div class="landing-bottom">
                <div class="landing-bottom-container">
                    <h2>Последние задания на сайте</h2>
-                   <div class="landing-task">
-                       <div class="landing-task-top task-courier"></div>
-                       <div class="landing-task-description">
-                           <h3><a href="#" class="link-regular">Подключить принтер</a></h3>
-                           <p>Необходимо подключить старый матричный принтер, у него еще LPT порт…</p>
-                       </div>
-                       <div class="landing-task-info">
-                           <div class="task-info-left">
-                               <p><a href="#" class="link-regular">Курьерские услуги</a></p>
-                               <p>25 минут назад</p>
-                           </div>
-                           <span>700 <b>₽</b></span>
-                       </div>
-                   </div>
-                   <div class="landing-task">
-                       <div class="landing-task-top task-cargo"></div>
-                       <div class="landing-task-description">
-                           <h3><a href="#" class="link-regular">Офисный переезд</a></h3>
-                           <p>Требуется перевезти офисную мебель
-                               и технику из расчета 5 сотрудников</p>
-                       </div>
-                       <div class="landing-task-info">
-                           <div class="task-info-left">
-                               <p><a href="#" class="link-regular">Грузоперевозки</a></p>
-                               <p>25 минут назад</p>
-                           </div>
-                           <span>1 800 <b>₽</b></span>
-                       </div>
-                   </div>
-                   <div class="landing-task">
-                       <div class="landing-task-top task-clean"></div>
-                       <div class="landing-task-description">
-                           <h3><a href="#" class="link-regular">Убраться в квартире</a></h3>
-                           <p>Моей хате давно нужна генеральная уборка.
-                               В наличии есть только пылесос. </p>
-                       </div>
-                       <div class="landing-task-info">
-                           <div class="task-info-left">
-                               <p><a href="#" class="link-regular">Уборка</a></p>
-                               <p>1 час назад</p>
-                           </div>
-                           <span>2000 <b>₽</b></span>
-                       </div>
-                   </div>
-                   <div class="landing-task">
-                       <div class="landing-task-top task-event"></div>
-                       <div class="landing-task-description">
-                           <h3><a href="#" class="link-regular">Празднование ДР</a></h3>
-                           <p>Моему другу нужно
-                               устроить день рождения,
-                               который он никогда не
-                               забудет</p>
-                       </div>
-                       <div class="landing-task-info">
-                           <div class="task-info-left">
-                               <p><a href="#" class="link-regular">Мероприятия</a></p>
-                               <p>1 час назад</p>
-                           </div>
-                           <span>2000 <b>₽</b></span>
-                       </div>
-                   </div>
+                   @foreach($tasks as $task)
+                        <div class="landing-task">
+                            <div class="landing-task-top task-{{ $task->category->alias }}"></div>
+                            <div class="landing-task-description">
+                                <h3>
+                                    <a href="{{ route('task.page', ['id' => $task->id]) }}" class="link-regular">
+                                        {{ $task->title }}
+                                    </a>
+                                </h3>
+                                <p class="crop">{{ $task->description }}</p>
+                            </div>
+                            <div class="landing-task-info">
+                                <div class="task-info-left">
+                                    <p>
+                                        <a href="/search?category_id={{ $task->category_id }}" class="link-regular">
+                                            {{ $task->category->name }}
+                                        </a>
+                                    </p>
+                                    <p>
+                                        {{ Carbon\Carbon::parse($task->created_at)
+                                            ->shiftTimezone($_COOKIE['timezone'])
+                                            ->diffForHumans() 
+                                        }}
+                                    </p>
+                                </div>
+                                <span>{{ $task->budget }} <b>₽</b></span>
+                            </div>
+                        </div>
+                   @endforeach
                </div>
                <div class="landing-bottom-container">
-                    <a href="{{route('browse')}}"><button type="button" class="button red-button">смотреть все задания</button></a>
+                    <a href="{{ route('browse.page') }}">
+                        <button type="button" class="button red-button">
+                            смотреть все задания
+                        </button>
+                    </a>
                </div>
            </div>
         </div>

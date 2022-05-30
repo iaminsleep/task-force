@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('city_id');
-            $table->float('rating');
-            $table->string('avatar');
+            $table->float('rating')->default(5.0);
+            $table->string('avatar')->default('noavatar.png');
             $table->rememberToken();
             $table->timestamps();
         });

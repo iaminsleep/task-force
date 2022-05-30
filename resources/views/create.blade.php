@@ -4,7 +4,8 @@
             <section class="create__task">
                 <h1>Публикация нового задания</h1>
                 <div class="create__task-main">
-                    <form class="create__task-form form-create" method="post" action="{{ route('task.create') }}" enctype="multipart/form-data" id="task-form">
+                    <form class="create__task-form form-create" method="post" action="{{ route('task-create.perform') }}" 
+                    enctype="multipart/form-data" id="task-form">
                         {{ csrf_field() }}
                         <label for="10">Мне нужно</label>
                         <input class="input textarea" rows="1" id="10" name="name" placeholder="Повесить полку"/>

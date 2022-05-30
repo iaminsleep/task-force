@@ -124,7 +124,6 @@
             });
             
             myMap.geoObjects.add(myPlacemark); // Добавление метки
-            myPlacemark.balloon.open(); // Открытие подсказки метки
             
         };    
     </script>

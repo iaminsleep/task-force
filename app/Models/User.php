@@ -27,8 +27,8 @@ class User extends Eloquent implements Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
         'city_id',
+        'avatar',
     ];
     
     /**
@@ -58,7 +58,7 @@ class User extends Eloquent implements Authenticatable
     */
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        $this->attributes['password'] = bcrypt($value); //automatically bcrypts the password on register
     }
 
     public function tasks() {
