@@ -12,10 +12,11 @@ class SearchTaskController extends Controller
         $searchParameters = request()->all();
 
         if (empty(array_filter($searchParameters, function ($searchParam) { 
-            return $searchParam !== null;
+            return $searchParam !== null; //check if search parameters are empty
         }))) {
             return redirect('/browse');
-        } else {
+        } 
+        else {
             $tasks = $service->execute();
             $tasks = $tasks->paginate(4);
         }

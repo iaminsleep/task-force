@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginUser {
   public function execute(array $data) {
-    Auth::attempt($data);
+    if(!Auth::attempt($data)) {
+      return redirect()->back()
+        ->withErrors(['auth-error' => 'Email или пароль введены некорректно'])
+        ->withInput();
+    };
   }
 }

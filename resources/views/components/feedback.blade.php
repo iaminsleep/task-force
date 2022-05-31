@@ -1,3 +1,6 @@
+@php
+  $timezone = $_COOKIE['timezone'] ?? config('timezone');
+@endphp
 <div class="content-view__feedback-wrapper">
   <div class="content-view__feedback-card">
       <div class="feedback-card__top">
@@ -9,7 +12,7 @@
             </div>
             <span class="new-task__time">
                 {{ Carbon\Carbon::parse($data['feedback']->created_at)
-                    ->shiftTimezone($_COOKIE['timezone'])
+                    ->shiftTimezone($timezone)
                     ->diffForHumans() 
                 }}
             </span>

@@ -8,7 +8,8 @@ class BrowseTasksController extends Controller
 {
     public function __invoke() 
     {
-        $tasks = Task::orderBy('created_at', 'ASC')->paginate(4);
+        $tasks = Task::withCount('feedbacks')->orderBy('feedbacks_count', 'DESC')->paginate(4);
+
         $optional_filters = [
             [
                 'name' => 'Без откликов',
@@ -19,6 +20,7 @@ class BrowseTasksController extends Controller
                 'alias' => 'remote_job',
             ],
         ];
+        
         $time_filters = [
             [
                 'name' => 'За день',
@@ -37,7 +39,7 @@ class BrowseTasksController extends Controller
         return view('browse', [
             'tasks' => $tasks, 
             'optional_filters' => $optional_filters, 
-            'time_filters' => $time_filters
+            'time_filters' => $time_filters,
         ]);
     }
 }

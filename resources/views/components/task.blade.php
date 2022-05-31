@@ -1,3 +1,6 @@
+@php
+  $timezone = $_COOKIE['timezone'] ?? config('timezone');
+@endphp
 <div class="new-task__card">
   <div class="new-task__title">
       <a href="{{ route('task.page', ['id' => $task->id]) }}" class="link-regular"><h2>{{ $task->title }}</h2></a>
@@ -12,5 +15,5 @@
   <p class="new-task_description">{{ $task->description }}</p>
   <b class="new-task__price new-task__price--translation">{{  $task->budget }}<b> ₽</b></b>
   <p class="new-task__place">{{ $task->city->name }}, {{ $task->location }}</p>
-  <span class="new-task__time">{{ Carbon\Carbon::parse($task->created_at)->shiftTimezone($_COOKIE['timezone'])->diffForHumans() }}</span>
+  <span class="new-task__time">{{ Carbon\Carbon::parse($task->created_at)->shiftTimezone($timezone)->diffForHumans() }}</span>
 </div>

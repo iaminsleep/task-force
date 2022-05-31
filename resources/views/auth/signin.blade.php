@@ -1,7 +1,7 @@
 <section class="modal enter-form form-modal" id="enter-form">
     <h2>Вход на сайт</h2>
     <form method="post" action="{{ route('login.perform') }}">
-        {{ csrf_field() }}
+        @csrf
         <p>
             <label class="form-modal-description 
             @if($errors->has('email') || $errors->has('auth-error')) {{ 'input-danger' }} @endif" for="enter-email">
@@ -28,3 +28,4 @@
     </form>
     <button class="form-modal-close" type="button">Закрыть</button>
 </section>
+<div class="overlay"></div>

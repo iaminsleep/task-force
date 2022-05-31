@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Models\User;
 
-use Illuminate\Support\Facades\Auth;
-
 use App\Http\Requests\SendMessageRequest;
 
 class SendMessageController extends Controller
@@ -23,7 +21,7 @@ class SendMessageController extends Controller
         $message = new Message();
         $message->message = request()->message;
         $message->task_id = $taskId;
-        $message->user_id = Auth::user()->id;
+        $message->user_id = auth()->user()->id;
 
         $message->save();
 

@@ -5,7 +5,6 @@ namespace App\Http\Services;
 use App\Models\Task;
 
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class CreateTaskService {
   public function execute(array $data) : Task {
@@ -17,7 +16,7 @@ class CreateTaskService {
     $task->location = $data['location'];
     $task->budget = $data['budget'];
     $task->deadline = $data['deadline'];
-    $task->created_at = Carbon::now();
+    $task->created_at = now();
 
     $task->save();
 

@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -25,7 +23,7 @@ class UserSeeder extends Seeder
                 'city_id' => 1,
                 'rating' => 5,
                 'avatar' => 'avatar-1.jpg',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
             [
                 'id' => 2,
@@ -35,7 +33,7 @@ class UserSeeder extends Seeder
                 'city_id' => 2,
                 'rating' => 4,
                 'avatar' => 'avatar-2.jpg',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
             [
                 'id' => 3,
@@ -45,7 +43,7 @@ class UserSeeder extends Seeder
                 'city_id' => 4,
                 'rating' => 3,
                 'avatar' => 'avatar-7.jpg',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
             [
                 'id' => 4,
@@ -55,7 +53,7 @@ class UserSeeder extends Seeder
                 'city_id' => 5,
                 'rating' => 4.75,
                 'avatar' => 'avatar-6.png',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
             [
                 'id' => 5,
@@ -65,7 +63,7 @@ class UserSeeder extends Seeder
                 'city_id' => 1,
                 'rating' => 4.9,
                 'avatar' => 'avatar-4.png',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
             [
                 'id' => 6,
@@ -75,7 +73,7 @@ class UserSeeder extends Seeder
                 'city_id' => 2,
                 'rating' => 3.8,
                 'avatar' => 'avatar-3.png',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
             [
                 'id' => 7,
@@ -85,7 +83,7 @@ class UserSeeder extends Seeder
                 'city_id' => 3,
                 'rating' => 4.5,
                 'avatar' => 'avatar-5.png',
-                'created_at' => Carbon::now(),
+                'created_at' => today(),
             ],
         ];
         DB::table('users')->insert($users);
