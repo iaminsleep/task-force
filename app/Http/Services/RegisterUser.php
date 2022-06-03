@@ -6,15 +6,7 @@ use App\Models\User;
 
 class RegisterUser {
   public function execute(array $data) : User {
-    $user = new User();
-
-    $user->name = $data['name'];
-    $user->email = $data['email'];
-    $user->password = $data['password'];
-    $user->city_id = $data['city_id'];
-    $user->created_at = now();
-
-    $user->save();
+    $user = User::create($data);
 
     return $user;
   }

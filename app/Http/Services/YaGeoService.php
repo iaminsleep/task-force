@@ -11,4 +11,8 @@ class YaGeoService {
     $longitude = $geo_data->getResponse()->getLongitude();
     return [$latitude, $longitude];
   }
+
+  public function validateAddress(string $full_address) {
+    return YaGeo::setQuery("$full_address")->load()->getResponse() !== null;
+  }
 }

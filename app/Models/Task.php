@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\User;
 use App\Models\Feedback;
+use App\Models\File;
 
 class Task extends Model
 {
@@ -37,5 +38,9 @@ class Task extends Model
 
     public function feedbacks() {
         return $this->hasMany(Feedback::class);
+    }
+
+    public function files() {
+        return $this->hasMany(File::class);
     }
 }

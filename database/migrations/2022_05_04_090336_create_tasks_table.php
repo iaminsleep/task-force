@@ -20,11 +20,10 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('city_id');
             $table->integer('user_id');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->integer('budget');
             $table->date('deadline');
-            $table->tinyInteger('remote')->default(0);
-            $table->timestamps();
+            $table->timestamps()->useCurrent();;
         });
     }
 

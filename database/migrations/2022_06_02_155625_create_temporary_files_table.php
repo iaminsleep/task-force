@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('temporary_files', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('task_id');
-            $table->string('message');
-            $table->integer('price');
+            $table->string('folder');
+            $table->string('filename');
+            $table->string('alias');
             $table->timestamps()->useCurrent();;
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('temporary_files');
     }
 };

@@ -13,6 +13,7 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use App\Models\Task;
 use App\Models\Feedback;
 use App\Models\Message;
+use App\Models\City;
 
 use Eloquent;
 class User extends Eloquent implements Authenticatable
@@ -27,10 +28,11 @@ class User extends Eloquent implements Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'password',
         'city_id',
         'avatar',
     ];
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -72,5 +74,10 @@ class User extends Eloquent implements Authenticatable
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

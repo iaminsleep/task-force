@@ -33,8 +33,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/account', 'AccountPageController')->name('account.page');
         Route::get('/mylist', 'MyListPageController')->name('mylist.page');
 
-        Route::view('/create', 'create')->name('task-create.page');
+        Route::get('/create', 'CreatePageController')->name('task-create.page');
         Route::post('/create', 'CreateTaskController')->name('task-create.perform');
+
+        Route::post('/upload', 'UploadController@store');
+        Route::post('/delete', 'UploadController@delete');
 
         Route::get('/messages/{taskId}', 'FetchMessagesController');
         Route::post('/messages/{taskId}', 'SendMessageController');

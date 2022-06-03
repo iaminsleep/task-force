@@ -6,7 +6,7 @@ use App\Models\Task;
 
 class BrowseTasksController extends Controller
 {
-    public function __invoke() 
+    public function __invoke()
     {
         $tasks = Task::withCount('feedbacks')->orderBy('feedbacks_count', 'DESC')->paginate(4);
 
@@ -20,25 +20,25 @@ class BrowseTasksController extends Controller
                 'alias' => 'remote_job',
             ],
         ];
-        
+
         $time_filters = [
             [
-                'name' => 'За день',
+                'name' => 'В течении дня',
                 'alias' => 'in_a_day'
             ],
             [
-                'name' => 'За неделю',
+                'name' => 'В течении недели',
                 'alias' => 'in_a_week',
             ],
             [
-                'name' => 'За месяц',
+                'name' => 'В течении месяца',
                 'alias' => 'in_a_month',
             ],
         ];
-        
+
         return view('browse', [
-            'tasks' => $tasks, 
-            'optional_filters' => $optional_filters, 
+            'tasks' => $tasks,
+            'optional_filters' => $optional_filters,
             'time_filters' => $time_filters,
         ]);
     }

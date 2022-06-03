@@ -88,7 +88,7 @@ footer {
   overflow: hidden; }
 
 .main-container {
-  width: 1280px;
+  width: 1400px;
   margin: 0 auto; }
 
 .page-main {
@@ -127,6 +127,7 @@ footer {
     fill: #ff6b81; }
 
 .header__nav {
+    margin-left: 5%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1; }
@@ -286,7 +287,9 @@ footer {
     .account__pop-up-list li a {
       font-family: "Roboto", sans-serif;
       color: #1e90ff;
-      text-decoration: none; }
+      text-decoration: none;
+        padding: 1em;
+        margin: -1em; }
   .account__pop-up-list::before {
     position: absolute;
     content: "";
@@ -1368,19 +1371,19 @@ footer {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  width: 519px;
-  height: 104px;
+  min-width: 519px;
+  min-height: 104px;
   border: 1px dashed #8a8a8d;
   background-image: url("../img/upload.png");
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 10px;
-  border-radius: 6px; }
+  border-radius: 6px; flex-direction: column}
   .create__file:hover {
     background-color: #f0f0f0; }
 
 .create__file span {
-  margin-bottom: 15px; }
+  margin-bottom: 10px; }
 
 .create__file:hover span {
   font-size: 0; }
@@ -1674,7 +1677,7 @@ footer {
     background-image: url("../img/three-rate.png"); }
 
 .registration__user {
-  padding-left: 10px; 
+  padding-left: 10px;
 }
 
 .registration__user h1 {
@@ -2037,7 +2040,7 @@ footer {
 
 .account_checkbox label {
     padding-top: 10px;
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
 }
 
 .account_section--bottom {
@@ -2397,7 +2400,7 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 20px;
+  margin: 18px;
   margin-bottom: 0;
   padding-top: 20px;
   padding-bottom: 25px;
@@ -2409,8 +2412,7 @@ footer {
   .landing-task-info span {
     font-weight: 700;
     font-size: 20px;
-    color: #666666;
-    padding-left: 18px; }
+    color: #666666; }
     .landing-task-info span b {
       font-weight: 600;
       font-size: 17px; }
@@ -2567,10 +2569,43 @@ footer {
 .completion-form-star .star-disabled:hover {
   background-image: url("../img/star.png"); }
 
-.dz-image,
+
 .dz-success-mark,
 .dz-error-mark {
   display: none !important;
+}
+
+.dz-image {
+    display: flex;
+    justify-content: center;
+}
+
+.dz-image img {
+    width: 50px;
+    height: 50px;
+}
+
+.dz-message {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.dropzone-previews {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+    width: 480px;
+    overflow: auto;
+}
+
+.files {
+    width: 750px;
+}
+
+.upload-error {
+    color: red;
 }
 
 .guest {

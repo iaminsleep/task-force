@@ -24,8 +24,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 1,
                 'location' => 'Востряковский проезд, 17 к 4',
                 'budget' => 35000,
-                'remote' => 1,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(2592000), //30 days
             ],
             [
@@ -36,8 +34,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 2,
                 'location' => 'Улица Салова, 57 к 5',
                 'budget' => 3500,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(86400), //1 day
             ],
             [
@@ -48,8 +44,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 3,
                 'location' => 'Российская улица, 72/1 к 1',
                 'budget' => 4000,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(86400), //1 day
             ],
             [
@@ -60,8 +54,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 4,
                 'location' => 'Улица Карла Либкнехта, 153',
                 'budget' => 1700,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(2592000), //30 days
             ],
             [
@@ -72,8 +64,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 5,
                 'location' => 'Проспект Красного Знамени, 114',
                 'budget' => 4500,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(604800), //7 days
             ],
             [
@@ -84,8 +74,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 6,
                 'location' => 'Улица Фрунзе, 38',
                 'budget' => 10000,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(604800), //7 days
             ],
             [
@@ -96,8 +84,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 7,
                 'location' => 'Переулок Островского, 1 А',
                 'budget' => 6000,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(432000), //5 days
             ],
             [
@@ -108,10 +94,8 @@ class TaskSeeder extends Seeder
                 'user_id' => 3,
                 'location' => 'Путевая улица, 8 В',
                 'budget' => 1900,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(259200), //3 days
-            ],   
+            ],
             [
                 'title' => 'Доставить пряники в детский сад',
                 'description' => 'Внимание! Очень хрупкий товар. Требуется аккуратный пеший курьер, который сможет доставить посылку без повреждений. Можно доставить и на велосипеде, но с гарантией безопасности от курьера.',
@@ -120,8 +104,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 2,
                 'location' => 'Гатчинское шоссе, 6 к 3',
                 'budget' => 800,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(86400), //1 day
             ],
             [
@@ -132,8 +114,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 1,
                 'location' => 'Михневская улица, 8',
                 'budget' => 19000,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(2592000), //30 days
             ],
             [
@@ -144,8 +124,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 4,
                 'location' => 'Улица Набережная Иркута, 1',
                 'budget' => 3400,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(172800), //2 days
             ],
             [
@@ -156,8 +134,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 5,
                 'location' => 'Улица Адмирала Кузнецова, 92',
                 'budget' => 8100,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(2592000), //30 days
             ],
             [
@@ -168,8 +144,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 6,
                 'location' => 'Улица Героев Рыбачьего, 9',
                 'budget' => 4480,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(432000), //5 days
             ],
             [
@@ -180,8 +154,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 7,
                 'location' => 'Улица Вересаева, 101/3 с 1',
                 'budget' => 12200,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(259200), //3 days
             ],
             [
@@ -192,8 +164,6 @@ class TaskSeeder extends Seeder
                 'user_id' => 4,
                 'location' => 'Отрадный переулок, 19 Б',
                 'budget' => 3850,
-                'remote' => 0,
-                'created_at' => now(),
                 'deadline' => now()->addSeconds(86400), //1 day
             ],
         ];

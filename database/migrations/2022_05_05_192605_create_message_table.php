@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('task_id')->unsigned();
             $table->text('message');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();;
         });
     }
 

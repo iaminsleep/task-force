@@ -12,33 +12,35 @@
 
 @section('scripts')
     {{-- Yandex Maps --}}
-    <script type="text/javascript">
-        ymaps.ready(init);
-        var myMap;
-        const latitude = @json($coordinates[0]);
-        const longitude = @json($coordinates[1]); // modern way of passing the php variable to javascript
+    @if($coordinates !== null)
+        <script type="text/javascript">
+            ymaps.ready(init);
+            var myMap;
+            const latitude = @json($coordinates[0]);
+            const longitude = @json($coordinates[1]); // modern way of passing the php variable to javascript
 
-        function init() {
+            function init() {
 
-            myMap = new ymaps.Map("map", {
-                center: [latitude, longitude], // coordinates of the location (center map)
-                zoom: 16 // map scale
-            });
+                myMap = new ymaps.Map("map", {
+                    center: [latitude, longitude], // coordinates of the location (center map)
+                    zoom: 16 // map scale
+                });
 
-            myMap.controls.add(
-                new ymaps.control.ZoomControl() // add a zoom control to the map
-            );
+                myMap.controls.add(
+                    new ymaps.control.ZoomControl() // add a zoom control to the map
+                );
 
-            myPlacemark = new ymaps.Placemark([latitude, longitude], { // coordinates of the placemark obj
-                balloonContent: "<div class='ya_map'>Место встречи</div>" // placemark baloon tip content
-            }, {
-                preset: "twirl#redDotIcon" // placemark type
-            });
+                myPlacemark = new ymaps.Placemark([latitude, longitude], { // coordinates of the placemark obj
+                    balloonContent: "<div class='ya_map'>Место встречи</div>" // placemark baloon tip content
+                }, {
+                    preset: "twirl#redDotIcon" // placemark type
+                });
 
-            myMap.geoObjects.add(myPlacemark); // add a placemark
+                myMap.geoObjects.add(myPlacemark); // add a placemark
 
-        };
-    </script>
+            };
+        </script>
+    @endif
 
     {{-- Messenger --}}
     <script type="text/javascript">
@@ -72,21 +74,31 @@
                     </div>
                     <div class="content-view__attach">
                         <h3 class="content-view__h3">Вложения</h3>
-                        <a href="#">my_picture.jpeg</a>
-                        <a href="#">agreement.docx</a>
+                        <div class="files">
+                            @forelse($files as $file)
+                                <a href="#">{{ $file->alias }}</a>
+                            @empty
+                                <p>Автор не прикрепил файлы к заданию</p>
+                            @endforelse
+                        </div>
                     </div>
                     <div class="content-view__location">
                         <h3 class="content-view__h3">Расположение</h3>
-                        <div class="content-view__location-wrapper">
-                            <div class="content-view__map">
-                                <div id="map"></div>
+                        @if($coordinates !== null)
+                            <div class="content-view__location-wrapper">
+                                <div class="content-view__map">
+                                    <div id="map"></div>
+                                </div>
+                                <div class="content-view__address">
+                                    <span class="address__town">{{ $task->city->name }}</span><br>
+                                    <span>{{ $task->location }}</span>
+                                    <p>Срок выполнения: {{ $deadline }}</p>
+                                </div>
                             </div>
-                            <div class="content-view__address">
-                                <span class="address__town">{{ $task->city->name }}</span><br>
-                                <span>{{ $task->location }}</span>
-                                <p>Срок выполнения: {{ $deadline }}</p>
-                            </div>
-                        </div>
+                        @else
+                            <p>Автор не указал адрес, работа считается удалённой.</p>
+                            <p>Срок выполнения: {{ $deadline }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="content-view__action-buttons">
@@ -108,7 +120,11 @@
                 @forelse($task->feedbacks as $feedback)
                     <x-feedback :data="['feedback' => $feedback, 'auth_user_id' => $auth_user_id]"></x-feedback>
                 @empty
-                    <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
+                    @if($auth_user_id !== $task->user->id)
+                        <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
+                    @else
+                        <p class="pd-l-20">На данный момент нет у вашего задания нет откликов.</p>
+                    @endif
                 @endforelse
             </div>
         </section>
@@ -130,9 +146,11 @@
                         профиль</a>
                 </div>
             </div>
-            <div id="chat-container">
-                <chat class="connect-desk__chat" task="{{ $task->id }}"></chat>
-            </div>
+            @auth
+                <div id="chat-container">
+                    <chat class="connect-desk__chat" task="{{ $task->id }}"></chat>
+                </div>
+            @endauth
         </section>
     </div>
     @auth

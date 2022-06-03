@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Task;
+use App\Models\User;
 
 class City extends Model
 {
@@ -22,5 +23,9 @@ class City extends Model
 
     public function tasks() {
         return $this->hasMany(Task::class);
+    }
+
+    public function users() {
+        return $this->hasMany(User::class);
     }
 }
