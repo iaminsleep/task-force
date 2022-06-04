@@ -19,17 +19,17 @@ class TaskPageController extends Controller
 
         $task = Task::findOrFail($id); //get task info
 
-        $timezone = $_COOKIE['timezone'] ?? config('timezone'); //get timezone from cookie, otherwise use config value
+        $timezone = $_COOKIE['timezone']; //get timezone from cookie, otherwise use config value
 
-        $time_difference = Carbon::parse($task->created_at)->shiftTimezone($timezone)->diffForHumans(); //get time difference between current date and the date when this task was created
+        $time_difference = Carbon::parse($task->created_at)->timezone($timezone)->diffForHumans(); //get time difference between current date and the date when this task was created
 
         $time_on_website = str_replace('назад', 'на сайте',
             Carbon::parse($task->user->created_at)
-                ->shiftTimezone($timezone)
+                ->timezone($timezone)
                 ->diffForHumans()
         ); //get the info about how long user is on the website
 
-        $deadline = Carbon::parse($task->deadline)->format('d-m-Y'); //get deadline date
+        $deadline = Carbon::parse($task->deadline)->format('d.m.Y'); //get deadline date
 
         if($task->location) {
             $city_name = $task->city->name;

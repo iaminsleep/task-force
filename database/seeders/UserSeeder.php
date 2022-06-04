@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'id' => 1,
-                'name' => 'Руслан',
+                'name' => 'Руслан Крючков',
                 'email' => 'ruslan@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 1,
@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'Денис',
-                'email' => 'denis@email.com',
+                'name' => 'Астахов Павел',
+                'email' => 'pavel@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 2,
                 'rating' => 4,
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'name' => 'Диана',
+                'name' => 'Диана Волкова',
                 'email' => 'diana@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 4,
@@ -47,8 +47,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'name' => 'Владимир',
-                'email' => 'vladimir@email.com',
+                'name' => 'Миронов Алексей',
+                'email' => 'alexey@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 5,
                 'rating' => 4.75,
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'name' => 'Стас',
+                'name' => 'Стас Устинов',
                 'email' => 'stas@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 1,
@@ -67,8 +67,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 6,
-                'name' => 'Уильям',
-                'email' => 'william@email.com',
+                'name' => 'Мамедов Кумар',
+                'email' => 'kumar@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 2,
                 'rating' => 3.8,
@@ -77,8 +77,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'name' => 'Алина',
-                'email' => 'alina@email.com',
+                'name' => 'Евгения Морозова',
+                'email' => 'evgeniya@email.com',
                 'password' => bcrypt('password@'),
                 'city_id' => 3,
                 'rating' => 4.5,

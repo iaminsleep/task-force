@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('folder');
             $table->string('filename');
             $table->string('alias');
-            $table->timestamps()->useCurrent();;
+            $table->timestamps();
         });
     }
 

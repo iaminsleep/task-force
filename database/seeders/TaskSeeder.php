@@ -25,6 +25,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Востряковский проезд, 17 к 4',
                 'budget' => 35000,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Убраться в квартире после вписки',
@@ -35,6 +36,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Салова, 57 к 5',
                 'budget' => 3500,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'created_at' => now(),
             ],
             [
                 'title' => 'Перевезти груз на новое место',
@@ -45,6 +47,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Российская улица, 72/1 к 1',
                 'budget' => 4000,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'created_at' => now(),
             ],
             [
                 'title' => 'Удалить вирусы на ноутбуке',
@@ -55,6 +58,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Карла Либкнехта, 153',
                 'budget' => 1700,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Провести фотосессию на день рождения',
@@ -65,6 +69,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Проспект Красного Знамени, 114',
                 'budget' => 4500,
                 'deadline' => now()->addSeconds(604800), //7 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Починить дверь в автомобиле',
@@ -75,6 +80,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Фрунзе, 38',
                 'budget' => 10000,
                 'deadline' => now()->addSeconds(604800), //7 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Покрасить стены в комнате',
@@ -85,6 +91,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Переулок Островского, 1 А',
                 'budget' => 6000,
                 'deadline' => now()->addSeconds(432000), //5 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Сделать маникюр',
@@ -95,6 +102,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Путевая улица, 8 В',
                 'budget' => 1900,
                 'deadline' => now()->addSeconds(259200), //3 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Доставить пряники в детский сад',
@@ -105,6 +113,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Гатчинское шоссе, 6 к 3',
                 'budget' => 800,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'created_at' => now(),
             ],
             [
                 'title' => 'Тамада на свадьбу',
@@ -115,6 +124,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Михневская улица, 8',
                 'budget' => 19000,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Привезти мебель на дом',
@@ -125,6 +135,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Набережная Иркута, 1',
                 'budget' => 3400,
                 'deadline' => now()->addSeconds(172800), //2 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Празднование ДР',
@@ -135,6 +146,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Адмирала Кузнецова, 92',
                 'budget' => 8100,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Убраться в квартире',
@@ -145,6 +157,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Героев Рыбачьего, 9',
                 'budget' => 4480,
                 'deadline' => now()->addSeconds(432000), //5 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Офисный переезд',
@@ -155,6 +168,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Улица Вересаева, 101/3 с 1',
                 'budget' => 12200,
                 'deadline' => now()->addSeconds(259200), //3 days
+                'created_at' => now(),
             ],
             [
                 'title' => 'Подключить принтер',
@@ -165,6 +179,7 @@ class TaskSeeder extends Seeder
                 'location' => 'Отрадный переулок, 19 Б',
                 'budget' => 3850,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'created_at' => now(),
             ],
         ];
         DB::table('task')->insert($tasks);

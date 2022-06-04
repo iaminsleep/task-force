@@ -38,6 +38,6 @@ class RealAddressRule implements Rule
      */
     public function message()
     {
-        return 'Введите настоящий адрес, чтобы исполнитель смог вас найти';
+        return 'Введите настоящий адрес';
     }
 }

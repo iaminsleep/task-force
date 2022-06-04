@@ -23,7 +23,7 @@ return new class extends Migration
             $table->float('rating')->default(5.0);
             $table->string('avatar')->default('noavatar.png');
             $table->rememberToken();
-            $table->timestamps()->useCurrent();
+            $table->timestamps();
         });
     }
 

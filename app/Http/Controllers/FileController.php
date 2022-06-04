@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 use App\Models\TemporaryFile;
+use App\Models\File;
 
-class UploadController extends Controller
+class FileController extends Controller
 {
     public function store(UploadFileRequest $request) {
         if($request->hasFile('file')) {
@@ -46,5 +47,10 @@ class UploadController extends Controller
         } else {
             return response($folderName, 404); //file not found
         }
+    }
+
+    public function download($fileId) {
+        $file = File::find($fileId);
+        return Storage::download('public/'.$file->filename, $file->alias);
     }
 }

@@ -103,7 +103,7 @@
                     <div class="landing-task">
                         <div class="landing-task-top task-{{ $task->category->alias }}"></div>
                         <div class="landing-task-description">
-                            <h3>
+                            <h3 class="crop">
                                 <a href="{{ route('task.page', ['id' => $task->id]) }}" class="link-regular">
                                     {{ $task->title }}
                                 </a>
@@ -120,7 +120,7 @@
                                 <p>
                                     {{ Carbon\Carbon::parse($task->created_at)
                                         ->shiftTimezone($timezone)
-                                        ->diffForHumans() 
+                                        ->diffForHumans()
                                     }}
                                 </p>
                             </div>

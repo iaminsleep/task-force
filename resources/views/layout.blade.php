@@ -26,6 +26,7 @@
           @include('auth.signin')
       @endguest
       <x-footer></x-footer>
+      <div class="overlay"></div>
     </div>
 </body>
 @yield('scripts')

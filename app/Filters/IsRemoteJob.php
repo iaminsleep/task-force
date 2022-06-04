@@ -7,7 +7,7 @@ class IsRemoteJob
     public function handle($query, $next)
     {
         if(request()->has('remote_job')) {
-            $query->where('remote', 1);
+            $query->where('location', null);
         }
 
         return $next($query);

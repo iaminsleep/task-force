@@ -12,14 +12,14 @@ class Feedback extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'feedback';
+
+    protected $fillable = ['user_id', 'task_id', 'payment', 'comment'];
 
     public function task() {
         return $this->belongsTo(Task::class);

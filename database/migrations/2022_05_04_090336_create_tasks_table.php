@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->integer('budget');
             $table->date('deadline');
-            $table->timestamps()->useCurrent();;
+            $table->timestamps();
         });
     }
 

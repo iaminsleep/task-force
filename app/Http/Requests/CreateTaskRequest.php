@@ -30,7 +30,7 @@ class CreateTaskRequest extends FormRequest
             'title' => 'required',
             'description' => 'required|min:10|max:2000',
             'category_id' => 'required',
-            'location' => [new RealAddressRule()],
+            'location' => ['nullable', new RealAddressRule()],
             'budget' => 'required|integer|between:100,1000000',
             'deadline' => 'required|date|after:yesterday',
             'files' => 'required',

@@ -17,7 +17,7 @@
         const csrf_token = document.head.querySelector('meta[name="csrf-token"]').content;
         let uploadedDocumentMap = {};
         var dropzone = new Dropzone("div.create__file", {
-            url: "/upload",
+            url: "files/upload",
             paramName: "file",
             addRemoveLinks: true,
             timeout: 5000,
@@ -75,7 +75,7 @@
                             'X-CSRF-TOKEN': csrf_token,
                         },
                         type: 'POST',
-                        url: '/delete',
+                        url: 'files/delete',
                         data: {
                             folderName: folderToDelete,
                         },
@@ -131,7 +131,7 @@
 
                     <label for="13">Адрес</label>
                     <input class="input-navigation input-middle input" id="13" type="search" name="location"
-                        placeholder="Калининский район, 22" />
+                        placeholder="Калининский район, 22"/>
                     <span>Укажите адрес исполнения, если задание требует присутствия</span>
 
                     <div class="create__price-time">
@@ -159,6 +159,12 @@
                         <p>Если загружаете фотографии объекта, то убедитесь,
                             что всё в фокусе, а фото показывает объект со всех
                             ракурсов.</p>
+                        <h3>Адрес</h3>
+                        <p>Пишите настоящий адрес, чтобы исполнитель смог <br>
+                            вас найти. В случае указания недостоверного адреса
+                            пользователи имеют право пожаловаться на вашу публикацию.
+                            Если их правота будет доказана, то вы будете
+                            заблокированы за нарушение правил.</p>
                     </div>
                     @if ($errors->any())
                         <div class="warning-item warning-item--error">

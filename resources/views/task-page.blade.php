@@ -64,8 +64,9 @@
                                 {{ $time_difference }}
                             </span>
                         </div>
-                        <b class="new-task__price new-task__price--clean content-view-price">{{ $task->budget }}<b>
-                                ₽</b></b>
+                        <b class="new-task__price new-task__price--clean content-view-price">
+                            {{ $task->budget }} <b>₽</b>
+                        </b>
                         <div class="new-task__icon new-task__icon--clean content-view-icon"></div>
                     </div>
                     <div class="content-view__description">
@@ -76,7 +77,9 @@
                         <h3 class="content-view__h3">Вложения</h3>
                         <div class="files">
                             @forelse($files as $file)
-                                <a href="#">{{ $file->alias }}</a>
+                                <a href="{{ route('file.download', ['fileId' => $file->id]) }}">
+                                    {{ $file->alias }}
+                                </a>
                             @empty
                                 <p>Автор не прикрепил файлы к заданию</p>
                             @endforelse
@@ -106,7 +109,7 @@
                         @if ($auth_user_id === $task->user->id)
                             <button class="button button__big-color request-button open-modal" type="button"
                                 data-for="complete-form">Завершить</button>
-                        @else
+                        @elseif(!auth()->user()->feedbacks->contains('task_id', $task->id))
                             <button class=" button button__big-color response-button open-modal" type="button"
                                 data-for="response-form">Откликнуться</button>
                             <button class="button button__big-color refusal-button open-modal" type="button"
@@ -118,7 +121,7 @@
             <div class="content-view__feedback">
                 <h2>Отклики <span>({{ $task->feedbacks->count() }})</span></h2>
                 @forelse($task->feedbacks as $feedback)
-                    <x-feedback :data="['feedback' => $feedback, 'auth_user_id' => $auth_user_id]"></x-feedback>
+                    <x-feedback :feedback="$feedback" auth_user_id="{{ $auth_user_id }}"></x-feedback>
                 @empty
                     @if($auth_user_id !== $task->user->id)
                         <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
@@ -157,7 +160,7 @@
         @if ($auth_user_id === $task->user->id)
             <x-completion-form></x-completion-form>
         @else
-            <x-response-form></x-response-form>
+            <x-response-form taskId="{{ $task->id }}"></x-response-form>
             <x-refusal-form></x-refusal-form>
         @endif
     @endauth

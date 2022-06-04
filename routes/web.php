@@ -36,8 +36,17 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/create', 'CreatePageController')->name('task-create.page');
         Route::post('/create', 'CreateTaskController')->name('task-create.perform');
 
-        Route::post('/upload', 'UploadController@store');
-        Route::post('/delete', 'UploadController@delete');
+        Route::group(['prefix' => 'files'], function() {
+            Route::post('/upload', 'FileController@store');
+            Route::post('/delete', 'FileController@delete');
+            Route::get('/download/{fileId}', 'FileController@download')
+                ->name('file.download');
+        });
+
+        Route::group(['prefix' => 'feedback'], function() {
+            Route::post('/post/{taskId}', 'CreateFeedbackController')->name('feedback.store');
+            Route::delete('/delete/{feedbackId}', 'DeleteFeedbackController')->name('feedback.delete');
+        });
 
         Route::get('/messages/{taskId}', 'FetchMessagesController');
         Route::post('/messages/{taskId}', 'SendMessageController');

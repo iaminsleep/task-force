@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('task_id');
-            $table->string('message');
-            $table->integer('price');
-            $table->timestamps()->useCurrent();;
+            $table->string('comment');
+            $table->integer('payment');
+            $table->timestamps();
         });
     }
 
