@@ -18,6 +18,10 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->unique();
             $table->string('alias');
         });
+
+        Artisan::call('db:seed', [
+            '--class' => CategorySeeder::class
+        ]);
     }
 
     /**

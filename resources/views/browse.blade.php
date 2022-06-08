@@ -8,7 +8,7 @@
     <div class="main-container page-container">
         <section class="new-task">
             <div class="new-task__wrapper">
-                <h1>Популярные задания</h1>
+                <h1>Новые задания</h1>
                 @forelse($tasks as $task)
                     <x-task :task="$task"></x-task>
                 @empty

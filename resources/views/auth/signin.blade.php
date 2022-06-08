@@ -7,7 +7,7 @@
             @if($errors->has('email') || $errors->has('auth-error')) {{ 'input-danger' }} @endif" for="enter-email">
                 Email
             </label>
-            <input class="enter-form-email input input-middle @if($errors->has('email') || $errors->has('auth-error')) {{ 'login-danger' }} @endif" name="email" id="enter-email" autocomplete="off">
+            <input class="enter-form-email input input-middle @if($errors->has('email') || $errors->has('auth-error')) {{ 'login-danger' }} @endif" name="email" id="enter-email" autocomplete="off" value="{{ old('email') }}">
             @error('email')
                 <span class="fs-12"> {{ $errors->first('email') }} </span>
             @enderror
@@ -21,8 +21,10 @@
                 Пароль
             </label>
             <input class="enter-form-email input input-middle  @if($errors->has('password')) {{ 'login-danger' }} @endif"
-            type="password" name="password" id="enter-password" autocomplete="off">
-            @error('password') <span class="fs-12"> {{ $errors->first('password') }} </span> @enderror
+            type="password" name="password" id="enter-password" autocomplete="off" value="{{ old('password') }}">
+            @error('password')
+                <span class="fs-12">{{ $errors->first('password') }}</span>
+            @enderror
         </p>
         <button class="button" type="submit">Войти</button>
     </form>

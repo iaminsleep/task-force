@@ -13,7 +13,11 @@ class File extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['task_id', 'filename', 'alias'];
+    protected $fillable = [
+        'task_id',
+        'filename',
+        'alias'
+    ];
 
     public function task()
     {

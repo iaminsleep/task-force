@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Task;
 
-class Feedback extends Model
+class Response extends Model
 {
     use HasFactory;
 
@@ -17,9 +17,14 @@ class Feedback extends Model
      *
      * @var string
      */
-    protected $table = 'feedback';
+    protected $table = 'response';
 
-    protected $fillable = ['user_id', 'task_id', 'payment', 'comment'];
+    protected $fillable = [
+        'user_id',
+        'task_id',
+        'payment',
+        'comment'
+    ];
 
     public function task() {
         return $this->belongsTo(Task::class);

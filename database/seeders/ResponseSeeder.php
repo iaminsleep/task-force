@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class FeedbackSeeder extends Seeder
+class ResponseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class FeedbackSeeder extends Seeder
      */
     public function run()
     {
-        $feedbacks = [
+        $responses = [
             //1th task
             [
                 'task_id' => 1,
@@ -84,7 +84,7 @@ class FeedbackSeeder extends Seeder
             //4th task
             [
                 'task_id' => 4,
-                'user_id' => 3,
+                'user_id' => 4,
                 'comment' => 'Могу сделать всё в лучшем виде. У меня есть необходимый опыт и инструменты.',
                 'payment' => 1500,
                 'created_at' => now(),
@@ -105,6 +105,6 @@ class FeedbackSeeder extends Seeder
             ],
         ];
 
-        DB::table('feedback')->insert($feedbacks);
+        DB::table('response')->insert($responses);
     }
 }

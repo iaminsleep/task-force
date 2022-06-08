@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('response', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('task_id');
@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('payment');
             $table->timestamps();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => ResponseSeeder::class
+        ]);
     }
 
     /**
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('response');
     }
 };

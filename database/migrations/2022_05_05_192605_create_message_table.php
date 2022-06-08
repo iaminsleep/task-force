@@ -17,9 +17,14 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->unsigned();
             $table->integer('task_id')->unsigned();
+            $table->integer('receiver_id')->unsigned();
             $table->text('message');
             $table->timestamps();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => MessageSeeder::class
+        ]);
     }
 
     /**

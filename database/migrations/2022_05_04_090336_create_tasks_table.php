@@ -22,9 +22,15 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('location')->nullable();
             $table->integer('budget');
+            $table->integer('performer_id')->nullable();
             $table->date('deadline');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => TaskSeeder::class
+        ]);
     }
 
     /**

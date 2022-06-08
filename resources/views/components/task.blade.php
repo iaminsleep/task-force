@@ -1,7 +1,3 @@
-@php
-  $timezone = $_COOKIE['timezone'] ?? config('timezone');
-@endphp
-
 <div class="new-task__card">
   <div class="new-task__title">
       <a href="{{ route('task.page', ['id' => $task->id]) }}" class="link-regular"><h2>{{ $task->title }}</h2></a>

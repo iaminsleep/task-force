@@ -181,7 +181,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //imported through composer
         Yandex\Geocode\YandexGeocodeServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -211,6 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'YaGeo' => Yandex\Geocode\Facades\YandexGeocodeFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class, //If you want to use the facade to log messages
     ])->toArray(),
 
 ];

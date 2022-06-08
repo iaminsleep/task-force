@@ -51,6 +51,11 @@ class FileController extends Controller
 
     public function download($fileId) {
         $file = File::find($fileId);
-        return Storage::download('public/'.$file->filename, $file->alias);
+        if(file_exists(storage_path('app/public/'.$file->filename))) {
+            return Storage::download('public/'.$file->filename, $file->alias);
+        }
+        else {
+            return redirect()->back();
+        }
     }
 }

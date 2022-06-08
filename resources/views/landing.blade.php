@@ -98,7 +98,7 @@
         </div>
         <div class="landing-bottom">
             <div class="landing-bottom-container">
-                <h2>Последние задания на сайте</h2>
+                <h2>Популярные задания на сайте</h2>
                 @forelse($tasks as $task)
                     <div class="landing-task">
                         <div class="landing-task-top task-{{ $task->category->alias }}"></div>

@@ -41,8 +41,11 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::all()->sortBy('id');
             $cities = City::all()->sortBy('id');
 
+            $timezone = $_COOKIE['timezone'] ?? config('timezone');
+
             View::share('categories', $categories);
             View::share('cities', $cities);
+            View::share('timezone', $timezone);
         }
     }
 }

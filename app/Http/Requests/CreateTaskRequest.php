@@ -30,7 +30,7 @@ class CreateTaskRequest extends FormRequest
             'title' => 'required',
             'description' => 'required|min:10|max:2000',
             'category_id' => 'required',
-            'location' => ['nullable', new RealAddressRule()],
+            'location' => ['string', 'nullable', new RealAddressRule()],
             'budget' => 'required|integer|between:100,1000000',
             'deadline' => 'required|date|after:yesterday',
             'files' => 'required',
@@ -54,8 +54,8 @@ class CreateTaskRequest extends FormRequest
             'category_id.required' => 'Задание должно принадлежать одной из категорий',
 
             'budget.required' => 'Введите бюджет задания',
-            'budget.numeric' => 'Бюджет должен быть числовым значением',
-            'budget.digits_between' => 'Слишком маленький или большой бюджет задания',
+            'budget.integer' => 'Бюджет должен быть числовым значением',
+            'budget.between' => 'Слишком маленький или большой бюджет задания',
 
             'deadline.required' => 'Дата обязательна для заполнения',
             'deadline.date' => 'Дата неправильного формата',

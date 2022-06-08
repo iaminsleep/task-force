@@ -6,10 +6,10 @@ use App\Models\User;
 
 class UsersPageController extends Controller
 {
-    public function __invoke() 
+    public function __invoke()
     {
-        $users = User::all();
-        
+        $users = User::orderBy('id', 'ASC')->paginate(3);
+
         return view('users', [ 'users' => $users ]);
     }
 }

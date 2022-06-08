@@ -39,17 +39,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::group(['prefix' => 'files'], function() {
             Route::post('/upload', 'FileController@store');
             Route::post('/delete', 'FileController@delete');
-            Route::get('/download/{fileId}', 'FileController@download')
-                ->name('file.download');
+            Route::get('/download/{fileId}', 'FileController@download')->name('file.download');
         });
 
-        Route::group(['prefix' => 'feedback'], function() {
-            Route::post('/post/{taskId}', 'CreateFeedbackController')->name('feedback.store');
-            Route::delete('/delete/{feedbackId}', 'DeleteFeedbackController')->name('feedback.delete');
+        Route::group(['prefix' => 'responses'], function() {
+            Route::post('{taskId}/post', 'CreateResponseController')->name('response.store');
+            Route::delete('/delete/{responseId}', 'ResponseController@delete')->name('response.delete');
+            Route::put('/accept/{responseId}', 'ResponseController@accept')->name('response.accept');
         });
 
-        Route::get('/messages/{taskId}', 'FetchMessagesController');
-        Route::post('/messages/{taskId}', 'SendMessageController');
+        Route::group(['prefix' => 'messages'], function() {
+            Route::get('/{taskId}', 'FetchMessagesController');
+            Route::post('/{taskId}', 'SendMessageController');
+        });
 
     });
 

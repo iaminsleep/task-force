@@ -11,17 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class CreateTaskService {
   public function execute(array $data) : Task {
-    $task = new Task();
-    $task->title = $data['title'];
-    $task->description = $data['description'];
-    $task->category_id = $data['category_id'];
-    $task->user_id = auth()->user()->id;
-    $task->city_id = auth()->user()->city->id;
-    $task->budget = $data['budget'];
-    $task->deadline = $data['deadline'];
-    $task->location = $data['location'];
-
-    $task->save();
+    $task = Task::create([
+        'title' => $data['title'],
+        'description' => $data['description'],
+        'category_id' => $data['category_id'],
+        'user_id' => auth()->user()->id,
+        'city_id' => auth()->user()->city->id,
+        'budget' => $data['budget'],
+        'deadline' => $data['deadline'],
+        'location' => $data['location'],
+    ]);
 
     foreach($data['files'] as $fileFolderName) {
         $tmpFile = TemporaryFile::where('folder', $fileFolderName)->first();

@@ -44,7 +44,7 @@
 
     {{-- Messenger --}}
     <script type="text/javascript">
-        var authUserId = @json($auth_user_id); //pass authenticated user id to the messenger script
+        var authUserId = @json(auth()->user()->id ?? null); //pass authenticated user id to the messenger script
     </script>
     <script src="/public/js/messenger.js"></script>
 @endsection
@@ -61,7 +61,7 @@
                                 <a href="/search?category_id={{ $task->category->id }}" class="link-regular">
                                     {{ $task->category->name }}
                                 </a>
-                                {{ $time_difference }}
+                                {{ Carbon\Carbon::parse($task->created_at)->timezone($timezone)->diffForHumans() }}
                             </span>
                         </div>
                         <b class="new-task__price new-task__price--clean content-view-price">
@@ -76,7 +76,7 @@
                     <div class="content-view__attach">
                         <h3 class="content-view__h3">Вложения</h3>
                         <div class="files">
-                            @forelse($files as $file)
+                            @forelse($task->files as $file)
                                 <a href="{{ route('file.download', ['fileId' => $file->id]) }}">
                                     {{ $file->alias }}
                                 </a>
@@ -106,12 +106,13 @@
                 </div>
                 <div class="content-view__action-buttons">
                     @auth
-                        @if ($auth_user_id === $task->user->id)
+                        @if (auth()->user()->id === $task->user->id)
                             <button class="button button__big-color request-button open-modal" type="button"
                                 data-for="complete-form">Завершить</button>
-                        @elseif(!auth()->user()->feedbacks->contains('task_id', $task->id))
+                        @elseif(!auth()->user()->responses->contains('task_id', $task->id))
                             <button class=" button button__big-color response-button open-modal" type="button"
                                 data-for="response-form">Откликнуться</button>
+                        @elseif(auth()->user()->id === $task->performer_id)
                             <button class="button button__big-color refusal-button open-modal" type="button"
                                 data-for="refuse-form">Отказаться</button>
                         @endif
@@ -119,11 +120,11 @@
                 </div>
             </div>
             <div class="content-view__feedback">
-                <h2>Отклики <span>({{ $task->feedbacks->count() }})</span></h2>
-                @forelse($task->feedbacks as $feedback)
-                    <x-feedback :feedback="$feedback" auth_user_id="{{ $auth_user_id }}"></x-feedback>
+                <h2>Отклики <span>({{ $task->responses()->count() }})</span></h2>
+                @forelse($task->responses as $response)
+                    <x-response :response="$response"></x-response>
                 @empty
-                    @if($auth_user_id !== $task->user->id)
+                    @if(auth()->user()->id !== $task->user->id)
                         <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
                     @else
                         <p class="pd-l-20">На данный момент нет у вашего задания нет откликов.</p>
@@ -143,21 +144,51 @@
                     </div>
                     <p class="info-customer">
                         <span>{{ $task_amount }}</span>
-                        <span class="last-">{{ $time_on_website }}</span>
+                        <span class="last-">
+                            {{ str_replace('назад', 'на сайте', Carbon\Carbon::parse($task->user->created_at)
+                                ->timezone($timezone)
+                                ->diffForHumans())
+                            }}
+                        </span>
                     </p>
-                    <a href="{{ route('user.page', ['id' => $task->user->id]) }}" class="link-regular">Смотреть
-                        профиль</a>
+                    <a href="{{ route('user.page', ['id' => $task->user->id]) }}" class="link-regular">
+                        Смотреть профиль
+                    </a>
                 </div>
             </div>
-            @auth
-                <div id="chat-container">
-                    <chat class="connect-desk__chat" task="{{ $task->id }}"></chat>
+            @if($task->performer_id)
+                <div class="connect-desk__profile-mini">
+                    <div class="profile-mini__wrapper">
+                        <h3>Исполнитель</h3>
+                        <div class="profile-mini__top">
+                            <img src="/img/avatar/{{ $performer->avatar }}" width="62" height="62" alt="Аватар заказчика">
+                            <div>
+                                <div class="profile-mini__name five-stars__rate">
+                                    <p>{{ $performer->name }}</p>
+                                </div>
+                                <div class="feedback-card__top--name">
+                                    <x-user-rating :rating="$performer->rating"></x-user-rating>
+                                    <b>{{ $performer->rating }}</b>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{ route('user.page', ['id' => $performer->id]) }}" class="link-regular">
+                            Смотреть профиль
+                        </a>
+                    </div>
                 </div>
+            @endif
+            @auth
+                @if($task->performer_id && ($task->performer_id === auth()->user()->id || $task->user_id === auth()->user()->id))
+                    <div id="chat-container">
+                        <chat class="connect-desk__chat" task="{{ $task->id }}"></chat>
+                    </div>
+                @endif
             @endauth
         </section>
     </div>
     @auth
-        @if ($auth_user_id === $task->user->id)
+        @if (auth()->user()->id === $task->user->id)
             <x-completion-form></x-completion-form>
         @else
             <x-response-form taskId="{{ $task->id }}"></x-response-form>

@@ -24,6 +24,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 1,
                 'location' => 'Востряковский проезд, 17 к 4',
                 'budget' => 35000,
+                'performer_id' => 4,
                 'deadline' => now()->addSeconds(2592000), //30 days
                 'created_at' => now(),
             ],
@@ -35,6 +36,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 2,
                 'location' => 'Улица Салова, 57 к 5',
                 'budget' => 3500,
+                'performer_id' => 3,
                 'deadline' => now()->addSeconds(86400), //1 day
                 'created_at' => now(),
             ],
@@ -43,9 +45,10 @@ class TaskSeeder extends Seeder
                 'description' => 'Срочно! Товары должны быть в полной сохранности по время перевозки! Возможны чаевые! Потребуется грузовик с вместимостью не меньше 750кг.',
                 'category_id' => 4,
                 'city_id' => 3,
-                'user_id' => 3,
+                'user_id' => 5,
                 'location' => 'Российская улица, 72/1 к 1',
                 'budget' => 4000,
+                'performer_id' => 2,
                 'deadline' => now()->addSeconds(86400), //1 day
                 'created_at' => now(),
             ],
@@ -54,9 +57,10 @@ class TaskSeeder extends Seeder
                 'description' => 'На сайте увидела, что я выиграла в лотерею. Для получения выигрыша нужно было скачать программу, я её скачала, но после этого у ноутбука намертво завис экран. Есть здесь программисты которые смогут помочь?!',
                 'category_id' => 2,
                 'city_id' => 4,
-                'user_id' => 4,
+                'user_id' => 3,
                 'location' => 'Улица Карла Либкнехта, 153',
                 'budget' => 1700,
+                'performer_id' => 1,
                 'deadline' => now()->addSeconds(2592000), //30 days
                 'created_at' => now(),
             ],
@@ -68,6 +72,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 5,
                 'location' => 'Проспект Красного Знамени, 114',
                 'budget' => 4500,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(604800), //7 days
                 'created_at' => now(),
             ],
@@ -79,6 +84,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 6,
                 'location' => 'Улица Фрунзе, 38',
                 'budget' => 10000,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(604800), //7 days
                 'created_at' => now(),
             ],
@@ -90,6 +96,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 7,
                 'location' => 'Переулок Островского, 1 А',
                 'budget' => 6000,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(432000), //5 days
                 'created_at' => now(),
             ],
@@ -101,6 +108,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 3,
                 'location' => 'Путевая улица, 8 В',
                 'budget' => 1900,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(259200), //3 days
                 'created_at' => now(),
             ],
@@ -112,6 +120,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 2,
                 'location' => 'Гатчинское шоссе, 6 к 3',
                 'budget' => 800,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(86400), //1 day
                 'created_at' => now(),
             ],
@@ -123,6 +132,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 1,
                 'location' => 'Михневская улица, 8',
                 'budget' => 19000,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(2592000), //30 days
                 'created_at' => now(),
             ],
@@ -134,6 +144,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 4,
                 'location' => 'Улица Набережная Иркута, 1',
                 'budget' => 3400,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(172800), //2 days
                 'created_at' => now(),
             ],
@@ -145,6 +156,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 5,
                 'location' => 'Улица Адмирала Кузнецова, 92',
                 'budget' => 8100,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(2592000), //30 days
                 'created_at' => now(),
             ],
@@ -156,6 +168,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 6,
                 'location' => 'Улица Героев Рыбачьего, 9',
                 'budget' => 4480,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(432000), //5 days
                 'created_at' => now(),
             ],
@@ -167,6 +180,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 7,
                 'location' => 'Улица Вересаева, 101/3 с 1',
                 'budget' => 12200,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(259200), //3 days
                 'created_at' => now(),
             ],
@@ -178,6 +192,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 4,
                 'location' => 'Отрадный переулок, 19 Б',
                 'budget' => 3850,
+                'performer_id' => null,
                 'deadline' => now()->addSeconds(86400), //1 day
                 'created_at' => now(),
             ],

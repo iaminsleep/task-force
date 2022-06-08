@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function __invoke(LoginRequest $request, LoginUser $service) {
         $service->execute($request->only('email', 'password'));
-        
+
         return redirect(route('browse.page'));
     }
 }

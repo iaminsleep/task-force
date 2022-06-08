@@ -9,5 +9,9 @@ class TemporaryFile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['folder', 'filename', 'alias'];
+    protected $fillable = [
+        'folder',
+        'filename',
+        'alias'
+    ];
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\User;
-use App\Models\Feedback;
+use App\Models\Response;
 use App\Models\File;
 
 class Task extends Model
@@ -22,6 +22,18 @@ class Task extends Model
      */
     protected $table = 'task';
 
+    protected $fillable = [
+        'title',
+        'description',
+        'category_id',
+        'user_id',
+        'city_id',
+        'budget',
+        'deadline',
+        'location',
+        'performer_id'
+    ];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
@@ -34,8 +46,8 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function feedbacks() {
-        return $this->hasMany(Feedback::class);
+    public function responses() {
+        return $this->hasMany(Response::class);
     }
 
     public function files() {

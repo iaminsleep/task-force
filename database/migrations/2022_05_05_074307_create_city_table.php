@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => CitySeeder::class
+        ]);
     }
 
     /**
