@@ -4,6 +4,8 @@ namespace App\Http\Services;
 
 use App\Models\Response;
 
+use App\Http\Services\DeleteResponse;
+
 class AcceptResponse {
   public function execute(Response $response) {
     $task = $response->task;
@@ -13,6 +15,9 @@ class AcceptResponse {
             'performer_id' => $response->user_id,
             'budget' => $response->payment
         ])->save();
+
+        $deleteResponse = new DeleteResponse;
+        $deleteResponse->execute($response);
 
         return true;
     }

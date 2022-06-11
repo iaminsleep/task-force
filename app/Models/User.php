@@ -12,6 +12,7 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
 use App\Models\Task;
 use App\Models\Response;
+use App\Models\Feedback;
 use App\Models\Message;
 use App\Models\City;
 
@@ -74,6 +75,11 @@ class User extends Eloquent implements Authenticatable
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function receivedFeedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'receiver_id');
     }
 
     public function city()

@@ -53,6 +53,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::post('/{taskId}', 'SendMessageController');
         });
 
+        Route::group(['prefix' => 'task'], function() {
+            Route::put('/{taskId}/refuse', 'RefuseTaskController')->name('task.refuse');
+            Route::put('/{taskId}/complete', 'CompleteTaskController')->name('task.complete');
+        });
+
     });
 
     Route::group(['middleware' => ['guest']], function() {

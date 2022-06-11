@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->integer('task_id')->unsigned();
-            $table->text('message');
+            $table->integer('task_id');
+            $table->integer('author_id');
+            $table->integer('receiver_id');
+            $table->string('comment');
+            $table->integer('rating');
             $table->timestamps();
         });
-
-        Artisan::call('db:seed', [
-            '--class' => MessageSeeder::class
-        ]);
     }
 
     /**
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('feedback');
     }
 };

@@ -31,7 +31,8 @@ class Task extends Model
         'budget',
         'deadline',
         'location',
-        'performer_id'
+        'performer_id',
+        'status'
     ];
 
     public function category() {

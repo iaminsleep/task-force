@@ -109,8 +109,8 @@
                         @if (auth()->user()->id === $task->user->id)
                             <button class="button button__big-color request-button open-modal" type="button"
                                 data-for="complete-form">Завершить</button>
-                        @elseif(!auth()->user()->responses->contains('task_id', $task->id))
-                            <button class=" button button__big-color response-button open-modal" type="button"
+                        @elseif(!auth()->user()->responses->contains('task_id', $task->id) && auth()->user()->id !== $task->performer_id)
+                            <button class="button button__big-color response-button open-modal" type="button"
                                 data-for="response-form">Откликнуться</button>
                         @elseif(auth()->user()->id === $task->performer_id)
                             <button class="button button__big-color refusal-button open-modal" type="button"
@@ -124,11 +124,15 @@
                 @forelse($task->responses as $response)
                     <x-response :response="$response"></x-response>
                 @empty
-                    @if(auth()->user()->id !== $task->user->id)
-                        <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
+                    @auth
+                        @if(auth()->user()->id !== $task->user->id)
+                            <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию. Станьте первым!</p>
+                        @elseif(auth()->user()->id === $task->user->id)
+                            <p class="pd-l-20">На данный момент нет у вашего задания нет откликов.</p>
+                        @endif
                     @else
-                        <p class="pd-l-20">На данный момент нет у вашего задания нет откликов.</p>
-                    @endif
+                        <p class="pd-l-20">Ещё никто не оставлял отклики к этому заданию.</p>
+                    @endauth
                 @endforelse
             </div>
         </section>
@@ -189,10 +193,10 @@
     </div>
     @auth
         @if (auth()->user()->id === $task->user->id)
-            <x-completion-form></x-completion-form>
+            <x-completion-form taskId="{{ $task->id}}" performerId="{{ $task->performer_id }}"></x-completion-form>
         @else
-            <x-response-form taskId="{{ $task->id }}"></x-response-form>
-            <x-refusal-form></x-refusal-form>
+            <x-response-form taskId="{{ $task->id}}"></x-response-form>
+            <x-refusal-form taskId="{{ $task->id}}"></x-refusal-form>
         @endif
     @endauth
 @endsection

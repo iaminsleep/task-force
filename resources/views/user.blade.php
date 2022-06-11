@@ -17,10 +17,11 @@
                             <x-user-rating :rating="$user->rating"></x-user-rating>
                             <b>{{ $user->rating }}</b>
                         </div>
-                        <b class="done-task">Выполнил 5 заказов</b><b class="done-review">Получил 6 отзывов</b>
+                        <b class="done-task">Выполнил(а) {{ $completedTasksCount }} заказов</b><br>
+                        <b class="done-review">Получил(а) {{ $receivedFeedbacks->count() }} отзывов</b>
                         </div>
                     <div class="content-view__headline user__card-bookmark user__card-bookmark--current">
-                        <span>Был на сайте 25 минут назад</span>
+                        <span>Был(а) на сайте 25 минут назад</span>
                             <a href="#"><b></b></a>
                     </div>
                 </div>
@@ -55,46 +56,14 @@
                 </div>
             </div>
             <div class="content-view__feedback">
-                <h2>Отзывы<span>(2)</span></h2>
+                <h2>Отзывы @if($receivedFeedbacks->count() > 0)<span>({{ $receivedFeedbacks->count() }})</span>@endif</h2>
                 <div class="content-view__feedback-wrapper reviews-wrapper">
-                    <div class="feedback-card__reviews">
-                        <p class="link-task link">Задание <a href="#" class="link-regular">«Выгулять моего боевого петуха»</a></p>
-                        <div class="card__review">
-                            <a href="#"><img src="./img/man-glasses.jpg" width="55" height="54"></a>
-                            <div class="feedback-card__reviews-content">
-                                <p class="link-name link"><a href="#" class="link-regular">Астахов Павел</a></p>
-                                <p class="review-text">
-                                    Кумар сделал всё в лучшем виде.  Буду обращаться к нему в будущем, если
-                                    возникнет такая необходимость!
-                                </p>
-                            </div>
-                            <div class="card__review-rate">
-                                <p class="five-rate big-rate">5<span></span></p>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="feedback-card__reviews">
-                            <p class="link-task link">Задание <a href="#" class="link-regular">«Повесить полочку»</a></p>
-                            <div class="card__review">
-                                <a href="#"><img src="./img/woman-glasses.jpg" width="55" height="54"></a>
-                                <div class="feedback-card__reviews-content">
-                                    <p class="link-name link"><a href="#" class="link-regular">Морозова Евгения</a></p>
-                                    <p class="review-text">
-                                        Кумар приехал позже, чем общал и не привез с собой всех
-                                        инстументов. В итоге пришлось еще ходить в строительный магазин.
-                                    </p>
-                                </div>
-                                <div class="card__review-rate">
-                                    <p class="three-rate big-rate">3<span></span></p>
-                                </div>
-                            </div>
-                        </div>
+                    @forelse($receivedFeedbacks as $feedback)
+                        <x-feedback :feedback="$feedback"></x-feedback>
+                    @empty
+                        <p>Вам ещё никто не оставлял отзыв!</p>
+                    @endforelse
                 </div>
-            </div>
-        </section>
-        <section class="connect-desk">
-            <div class="connect-desk__chat">
-
             </div>
         </section>
     </div>

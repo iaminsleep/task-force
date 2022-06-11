@@ -34,7 +34,7 @@
                                 @elseif($user->tasks()->count() > 4) {{ 'заданий' }}
                                 @endif
                             </span>
-                            <span>6 отзывов</span>
+                            <span>{{ $user->receivedFeedbacks->count() }} отзывов</span>
                         </div>
                         <div class="feedback-card__top--name user__search-card">
                             <p class="link-name">

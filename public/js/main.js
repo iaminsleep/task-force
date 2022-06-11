@@ -28,29 +28,27 @@ for (var j = 0; j < closeModalLinks.length; j++) {
   closeModalLink.addEventListener("click", closeModal)
 }
 
-var starRating = document.getElementsByClassName("completion-form-star");
+const starInputs = document.querySelectorAll('.completion-form-star span input');
 
-if (starRating.length) {
-  starRating = starRating[0];
+starInputs.forEach(input => {
+    input.addEventListener('click', function(e) {
+        var stars = document.querySelectorAll('.completion-form-star span');
 
-  starRating.addEventListener("click", function(event) {
-    var stars = event.currentTarget.childNodes;
-    var rating = 0;
+        for (var i = 0; i < stars.length ; i++) {
+            var element = stars[i];
 
-    for (var i = 0; i < stars.length; i++) {
-      var element = stars[i];
+            if (element.nodeName === "SPAN") {
+                element.className = "star-disabled";
+            }
+        }
 
-      if (element.nodeName === "SPAN") {
-        element.className = "";
-        rating++;
-      }
+        for (var i = 0; i < e.target.value ; i++) {
+            var element = stars[i];
 
-      if (element === event.target) {
-        break;
-      }
-    }
-
-    var inputField = document.getElementById("rating");
-    inputField.value = rating;
-  });
-}
+            if (element.nodeName === "SPAN") {
+                element.className = "star-disabled";
+                element.className = "";
+            }
+        }
+    })
+})
