@@ -22,6 +22,17 @@ return new class extends Migration
             $table->integer('city_id');
             $table->float('rating')->default(5.0);
             $table->string('avatar')->default('noavatar.png');
+
+            //optional (can fill in account settings)
+            $table->date('birth_date')->nullable();
+            $table->json('specialization')->nullable();
+            $table->string('description')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('skype')->nullable();
+
+            //online status
+            $table->timestamp('last_seen')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

@@ -11,16 +11,16 @@ class SearchTaskController extends Controller
     public function __invoke(SearchTaskService $service) {
         $searchParameters = request()->all();
 
-        if (empty(array_filter($searchParameters, function ($searchParam) { 
+        if (empty(array_filter($searchParameters, function ($searchParam) {
             return $searchParam !== null; //check if search parameters are empty
         }))) {
             return redirect('/browse');
-        } 
+        }
         else {
             $tasks = $service->execute();
             $tasks = $tasks->paginate(4);
         }
-        
-        return view('search', ['tasks' => $tasks]);
+
+        return view('search-task', ['tasks' => $tasks]);
     }
 }

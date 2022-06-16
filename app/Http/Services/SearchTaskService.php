@@ -15,13 +15,13 @@ class SearchTaskService
         return app(Pipeline::class)
             ->send($query)
             ->through([
-                \App\Filters\Tasks\ByCategories::class,
-                \App\Filters\Tasks\IsRemoteJob::class,
-                \App\Filters\Tasks\HasNoResponses::class,
-                \App\Filters\Tasks\ByTimePeriod::class,
-                \App\Filters\Tasks\ByName::class,
-                \App\Filters\Tasks\ByCityId::class,
-                \App\Filters\Tasks\BySingleCategory::class,
+                \App\Filters\Tasks\ByTaskCategories::class,
+                \App\Filters\Tasks\ByTaskRemoteJob::class,
+                \App\Filters\Tasks\ByTaskNoResponses::class,
+                \App\Filters\Tasks\ByTaskTimePeriod::class,
+                \App\Filters\Tasks\ByTaskName::class,
+                \App\Filters\Tasks\ByTaskCity::class,
+                \App\Filters\Tasks\ByTaskCategory::class,
             ])
             ->thenReturn();
     }

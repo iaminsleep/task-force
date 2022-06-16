@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filters;
+namespace App\Filters\Tasks;
 
-class ByCategories
+class ByTaskCategories
 {
     public function handle($query, $next)
     {
         if(request()->has('category')) {
             $query->whereIn('category_id', request()->category);
         }
-        
+
         return $next($query);
     }
 }

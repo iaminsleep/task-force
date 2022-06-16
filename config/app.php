@@ -184,6 +184,7 @@ return [
         //imported through composer
         Yandex\Geocode\YandexGeocodeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -214,6 +215,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'YaGeo' => Yandex\Geocode\Facades\YandexGeocodeFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class, //If you want to use the facade to log messages
+        'Image' => Intervention\Image\Facades\Image::class, //allows resize posted images
     ])->toArray(),
 
 ];

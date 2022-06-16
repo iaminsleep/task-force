@@ -22,46 +22,11 @@
                 </ul>
             </div>
             @forelse($users as $user)
-                <div class="content-view__feedback-card user__search-wrapper">
-                    <div class="feedback-card__top">
-                        <div class="user__search-icon">
-                            <a href="{{ route('user.page', ['id' => $user->id]) }}">
-                                <img src="/img/avatar/{{ $user->avatar }}" width="65" height="65">
-                            </a>
-                            <span>{{ $user->tasks()->count() }}
-                                @if($user->tasks()->count() === 1) {{ 'задание' }}
-                                @elseif($user->tasks()->count() > 1 && $user->tasks()->count() <= 4) {{ 'задания' }}
-                                @elseif($user->tasks()->count() > 4) {{ 'заданий' }}
-                                @endif
-                            </span>
-                            <span>{{ $user->receivedFeedbacks->count() }} отзывов</span>
-                        </div>
-                        <div class="feedback-card__top--name user__search-card">
-                            <p class="link-name">
-                                <a href="{{ route('user.page', ['id' => $user->id]) }}" class="link-regular">
-                                    {{ $user->name }}
-                                </a>
-                            </p>
-                            <x-user-rating :rating="$user->rating"></x-user-rating>
-                            <b>{{ $user->rating }}</b>
-                            <p class="user__search-content">
-                                Сложно сказать, почему элементы политического процесса лишь
-                                добавляют фракционных разногласий и рассмотрены исключительно
-                                в разрезе маркетинговых и финансовых предпосылок.
-                            </p>
-                        </div>
-                        <span class="new-task__time">Был на сайте 25 минут назад</span>
-                    </div>
-                    <div class="link-specialization user__search-link--bottom">
-                        <a href="#" class="link-regular">Ремонт</a>
-                        <a href="#" class="link-regular">Курьер</a>
-                        <a href="#" class="link-regular">Оператор ПК</a>
-                    </div>
-                @empty
-                    <p>Здесь пусто...</p>
-                @endforelse
-                {{  $users->links() }}
-            </div>
+                <x-user :user="$user"></x-user>
+            @empty
+                <p>Здесь пусто...</p>
+            @endforelse
+            {{  $users->links() }}
         </section>
         <section  class="search-task">
             <div class="search-task__wrapper">

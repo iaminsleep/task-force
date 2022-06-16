@@ -32,6 +32,11 @@ class User extends Eloquent implements Authenticatable
         'password',
         'city_id',
         'avatar',
+        'description',
+        'birth_date',
+        'specialization',
+        'phone',
+        'skype',
     ];
 
     /**

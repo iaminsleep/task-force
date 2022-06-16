@@ -13,7 +13,7 @@ class UserPageController extends Controller
         $receivedFeedbacks = $user->receivedFeedbacks;
         $completedTasksCount = Task::where('performer_id', $user->id)->where('status', 2)->count();
 
-        return view('user', [
+        return view('user-profile', [
             'user' => $user,
             'receivedFeedbacks' => $receivedFeedbacks,
             'completedTasksCount' => $completedTasksCount

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filters;
+namespace App\Filters\Tasks;
+
 use Carbon\Carbon;
 
-class ByTimePeriod
+class ByTaskTimePeriod
 {
     public function handle($query, $next)
     {
@@ -18,7 +19,7 @@ class ByTimePeriod
 
             $query->where('deadline', '<=', $filterDate);
         }
-        
+
         return $next($query);
     }
 }

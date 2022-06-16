@@ -1618,6 +1618,10 @@ footer {
   display: -ms-flexbox;
   display: flex; }
 
+.online {
+    color: green !important;
+}
+
 .card__review img {
   margin-right: 20px;
   border-radius: 4px; }

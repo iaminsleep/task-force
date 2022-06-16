@@ -31,6 +31,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/logout', 'LogoutController')->name('logout.perform');
 
         Route::get('/account', 'AccountPageController')->name('account.page');
+        Route::put('/account', 'AccountChangeController')->name('account.change');
+
         Route::get('/mylist', 'MyListPageController')->name('mylist.page');
 
         Route::get('/create', 'CreatePageController')->name('task-create.page');
