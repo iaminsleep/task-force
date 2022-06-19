@@ -15,6 +15,7 @@ use App\Models\Response;
 use App\Models\Feedback;
 use App\Models\Message;
 use App\Models\City;
+use App\Models\Favourite;
 
 use Eloquent;
 class User extends Eloquent implements Authenticatable
@@ -73,6 +74,10 @@ class User extends Eloquent implements Authenticatable
         return $this->hasMany(Task::class);
     }
 
+    public function performing_tasks() {
+        return $this->hasMany(Task::class, 'performer_id');
+    }
+
     public function responses() {
         return $this->hasMany(Response::class);
     }
@@ -82,9 +87,14 @@ class User extends Eloquent implements Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    public function receivedFeedbacks()
+    public function received_feedbacks()
     {
         return $this->hasMany(Feedback::class, 'receiver_id');
+    }
+
+    public function favourites()
+    {
+        return $this->hasMany(Favourite::class);
     }
 
     public function city()

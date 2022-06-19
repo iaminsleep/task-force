@@ -12,7 +12,7 @@
                 @elseif($user->tasks()->count() > 4) {{ 'заданий' }}
                 @endif
             </span>
-            <span>{{ $user->receivedFeedbacks->count() }} отзывов</span>
+            <span>{{ $user->received_feedbacks->count() }} отзывов</span>
         </div>
         <div class="feedback-card__top--name user__search-card">
             <p class="link-name">
@@ -34,7 +34,7 @@
     </div>
     <div class="link-specialization user__search-link--bottom">
         @foreach(json_decode($user->specialization, true) as $specialization)
-            <a href="#" class="link-regular">
+            <a href="/search-user?specialization_id={{ $specialization }}" class="link-regular">
                 {{ $categories->toArray()[$specialization]["name"] }}
             </a>
         @endforeach

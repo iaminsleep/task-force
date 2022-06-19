@@ -10,15 +10,13 @@
             <div class="user__search-link">
                 <p>Сортировать по:</p>
                 <ul class="user__search-list">
-                    <li class="user__search-item user__search-item--current">
-                        <a href="#" class="link-regular">Рейтингу</a>
-                    </li>
-                    <li class="user__search-item">
-                        <a href="#" class="link-regular">Числу заказов</a>
-                    </li>
-                    <li class="user__search-item">
-                        <a href="#" class="link-regular">Популярности</a>
-                    </li>
+                    @foreach($main_filters as $filter)
+                        <li class="user__search-item user__search-item--current">
+                            <a href="/search-user?{{ $filter['alias'] }}=on" class="link-regular">
+                                {{ $filter['name'] }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             @forelse($users as $user)
@@ -28,35 +26,34 @@
             @endforelse
             {{  $users->links() }}
         </section>
-        <section  class="search-task">
+        <section class="search-task">
             <div class="search-task__wrapper">
-                <form class="search-task__form" name="users" method="post" action="#">
+                <form class="search-task__form" method="get" action="{{ route('user.search') }}">
+
                     <fieldset class="search-task__categories">
                         <legend>Категории</legend>
-                        <input class="visually-hidden checkbox__input" id="101" type="checkbox" name="" value="" checked disabled>
-                        <label for="101">Курьерские услуги </label>
-                        <input class="visually-hidden checkbox__input" id="102" type="checkbox" name="" value="" checked>
-                        <label  for="102">Грузоперевозки </label>
-                        <input class="visually-hidden checkbox__input" id="103" type="checkbox" name="" value="">
-                        <label  for="103">Переводы </label>
-                        <input class="visually-hidden checkbox__input" id="104" type="checkbox" name="" value="">
-                        <label  for="104">Строительство и ремонт </label>
-                        <input class="visually-hidden checkbox__input" id="105" type="checkbox" name="" value="">
-                        <label  for="105">Выгул животных </label>
+                        @foreach ($categories as $category)
+                            <input class="visually-hidden checkbox__input" id="{{ $category->id }}" type="checkbox"
+                                name="specialization[]" value="{{ $category->id - 1 }}" />
+                            <label for="{{ $category->id }}">{{ $category->name }}</label>
+                        @endforeach
                     </fieldset>
+
                     <fieldset class="search-task__categories">
                         <legend>Дополнительно</legend>
-                        <input class="visually-hidden checkbox__input" id="106" type="checkbox" name="" value="" disabled>
-                        <label for="106">Сейчас свободен</label>
-                        <input class="visually-hidden checkbox__input" id="107" type="checkbox" name="" value="" checked>
-                        <label for="107">Сейчас онлайн</label>
-                        <input class="visually-hidden checkbox__input" id="108" type="checkbox" name="" value="" checked>
-                        <label for="108">Есть отзывы</label>
-                        <input class="visually-hidden checkbox__input" id="109" type="checkbox" name="" value="" checked>
-                        <label for="109">В избранном</label>
+                        @foreach($optional_filters as $filter)
+                            <input class="visually-hidden checkbox__input" id="{{ $filter["alias"] }}" type="checkbox" name="{{ $filter["alias"] }}">
+                            <label for="{{ $filter["alias"] }}">{{ $filter["name"] }}</label>
+                        @endforeach
+                        @auth
+                            <input class="visually-hidden checkbox__input" id="in_favourites" type="checkbox" name="in_favourites">
+                            <label for="in_favourites">В избранном</label>
+                        @endauth
                     </fieldset>
+
                     <label class="search-task__name" for="110">Поиск по имени</label>
-                    <input class="input-middle input" id="110" type="search" name="q" placeholder="">
+                    <input class="input-middle input" id="110" type="search" name="name" placeholder="Иван Иванов">
+
                     <button class="button" type="submit">Искать</button>
                 </form>
             </div>

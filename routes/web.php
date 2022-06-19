@@ -21,7 +21,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     Route::get('task/{id}', 'TaskPageController')->name('task.page');
 
-    Route::get('/search', 'SearchTaskController')->name('task.search');
+    Route::get('/search-task', 'SearchTaskController')->name('task.search');
+    Route::get('/search-user', 'SearchUserController')->name('user.search');
 
     Route::get('/users', 'UsersPageController')->name('users.page');
     Route::get('/user/{id}', 'UserPageController')->name('user.page');
@@ -60,6 +61,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::put('/{taskId}/complete', 'CompleteTaskController')->name('task.complete');
         });
 
+        Route::group(['prefix' => 'user'], function() {
+            Route::post('/{id}/add-fav', 'FavouriteController@add')->name('favourites.add');
+            Route::delete('/{id}/del-fav', 'FavouriteController@delete')->name('favourites.delete');
+        });
     });
 
     Route::group(['middleware' => ['guest']], function() {

@@ -8,7 +8,7 @@
     </p>
     <div class="card__review">
         <a href="{{ route('user.page', ['id' => $feedback->author->id]) }}">
-            <img src="/img/avatar/{{ $feedback->author->avatar }}" width="55" height="54">
+            <img src="/img/avatars/{{ $feedback->author->avatar }}" width="55" height="54">
         </a>
         <div class="feedback-card__reviews-content">
             <p class="link-name link">

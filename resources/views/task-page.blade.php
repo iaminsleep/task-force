@@ -141,7 +141,7 @@
                 <div class="profile-mini__wrapper">
                     <h3>Заказчик</h3>
                     <div class="profile-mini__top">
-                        <img src="/img/avatar/{{ $task->user->avatar }}" width="62" height="62" alt="Аватар заказчика">
+                        <img src="/img/avatars/{{ $task->user->avatar }}" width="62" height="62" alt="Аватар заказчика">
                         <div class="profile-mini__name five-stars__rate">
                             <p>{{ $task->user->name }}</p>
                         </div>

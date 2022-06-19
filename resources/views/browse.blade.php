@@ -18,7 +18,7 @@
         </section>
         <section class="search-task">
             <div class="search-task__wrapper">
-                <form class="search-task__form" method="get" action="/search">
+                <form class="search-task__form" method="get" action="{{ route('task.search') }}">
                     <fieldset class="search-task__categories">
                         <legend>Категории</legend>
                         @foreach ($categories as $category)

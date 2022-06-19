@@ -22,6 +22,10 @@ return new class extends Migration
             $table->integer('rating');
             $table->timestamps();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => FeedbackSeeder::class
+        ]);
     }
 
     /**
