@@ -8,7 +8,7 @@
   <div class="content-view__feedback-card">
         <div class="feedback-card__top">
             <a href="{{ $userPageLink }}" style="margin-right:25px;">
-                <img src="/img/avatar/{{ $response->user->avatar }}" width="55" height="55">
+                <img src="/img/avatars/{{ $response->user->avatar }}" width="55" height="55">
             </a>
             <div class="feedback-card__top--name">
                 <p>

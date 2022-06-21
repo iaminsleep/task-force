@@ -190,22 +190,25 @@ footer {
   width: 30px;
   height: 30px; }
 
-.header__lightbulb:hover + .lightbulb__pop-up {
+.header__lightbulb .lightbulb__pop-up {
+    display: none;
+}
+
+.header__lightbulb:hover .lightbulb__pop-up {
   display: block; }
 
 .lightbulb__pop-up {
-  display: none;
-  position: absolute;
-  top: 83px;
-  right: 106px;
-  z-index: 10;
-  background-color: #ffffff;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: #424141;
-  width: 180px;
-  border: 1px solid #000000;
-  border-radius: 8px; }
+position: absolute;
+    top: 55px;
+    right: -90px;
+    z-index: 10;
+    background-color: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #424141;
+    width: 180px;
+    border: 1px solid #000000;
+    border-radius: 8px; }
   .lightbulb__pop-up h3 {
     position: relative;
     font-size: 16px;
@@ -1631,6 +1634,24 @@ footer {
 .no-button {
     background: none;
     border: none;
+}
+
+.read-button {
+    font-size: 12px;
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+.read-button:visited {
+    color: dodgerblue;
+}
+
+.read-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .card__review img {

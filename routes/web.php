@@ -39,6 +39,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/create', 'CreatePageController')->name('task-create.page');
         Route::post('/create', 'CreateTaskController')->name('task-create.perform');
 
+        Route::get('/mark-as-read', 'ReadNotificationsController')->name('notifications.read');
+
         Route::group(['prefix' => 'files'], function() {
             Route::post('/upload', 'FileController@store');
             Route::post('/delete', 'FileController@delete');

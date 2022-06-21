@@ -6,6 +6,8 @@ use App\Models\Task;
 use App\Models\User;
 use App\Models\Feedback;
 
+use App\Notifications\UserNotification;
+
 class CompleteTask {
   public function execute(array $data, $taskId) {
     $task = Task::findOrFail($taskId);
@@ -25,6 +27,13 @@ class CompleteTask {
 
     $user->rating = $newRating;
     $task->status = $data['status'];
+
+    User::find($task->performer_id)->notify(new UserNotification([
+        "message" => 'Завершено задание',
+        "task_name" => $task->title,
+        'task_id' => $task->id,
+        "type" => 'close',
+    ]));
 
     $task->save();
     $user->save();

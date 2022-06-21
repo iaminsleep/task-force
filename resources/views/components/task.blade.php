@@ -1,7 +1,7 @@
 <div class="new-task__card">
   <div class="new-task__title">
       <a href="{{ route('task.page', ['id' => $task->id]) }}" class="link-regular"><h2>{{ $task->title }}</h2></a>
-      <form method="get" action="/search">
+      <form method="get" action="{{ route('task.search') }}">
         <a class="new-task__type link-regular" onclick="this.closest('form').submit()">
           <p>{{ $task->category->name }}</p>
           <input type="hidden" name="category_id" value="{{ $task->category->id }}"/>

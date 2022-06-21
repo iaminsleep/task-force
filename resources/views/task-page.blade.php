@@ -165,7 +165,7 @@
                     <div class="profile-mini__wrapper">
                         <h3>Исполнитель</h3>
                         <div class="profile-mini__top">
-                            <img src="/img/avatar/{{ $performer->avatar }}" width="62" height="62" alt="Аватар заказчика">
+                            <img src="/img/avatars/{{ $performer->avatar }}" width="62" height="62" alt="Аватар заказчика">
                             <div>
                                 <div class="profile-mini__name five-stars__rate">
                                     <p>{{ $performer->name }}</p>
