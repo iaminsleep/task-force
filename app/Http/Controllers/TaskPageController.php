@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Message;
 
 use Carbon\Carbon;
 
@@ -14,6 +15,9 @@ class TaskPageController extends Controller
 {
     public function __invoke($id, YaGeoService $service, GetTaskAmountDeclension $action) {
         $task = Task::findOrFail($id);
+
+        if($task->messages)
+            Message::with('task')->whereNull('read_at')->update(['read_at' => Carbon::now()]);
 
         $deadline = Carbon::parse($task->deadline)->format('d.m.Y');
 

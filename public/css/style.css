@@ -1788,11 +1788,33 @@ position: absolute;
       align-self: center;
   color: #ffffff; }
 
-.done-status {
-  background-color: #00b894; }
+.active-status {
+  background-color: #00b894;
+}
 
-.new-status {
-  background-color: #ff7f50; }
+.completed-status {
+  background-color: #ff754b;
+}
+
+.cancelled-status {
+  background-color: #e22626;
+}
+
+.expired-status {
+  background-color: #2639e2;
+}
+
+.no-performer {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.no-performer-name {
+    font-size: 16px;
+}
 
 .my-list__bottom {
   display: -webkit-box;

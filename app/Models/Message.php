@@ -11,6 +11,8 @@ class Message extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * The database table used by the model.
      *
@@ -27,7 +29,8 @@ class Message extends Model
         'message',
         'task_id',
         'user_id',
-        'receiver_id',
+        'read_at',
+        'created_at'
     ];
 
     /**

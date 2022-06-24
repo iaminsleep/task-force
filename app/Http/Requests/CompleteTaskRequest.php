@@ -25,8 +25,8 @@ class CompleteTaskRequest extends FormRequest
     {
         return [
             'status' => 'required|integer|gt:1|lte:3',
-            'comment' => 'required|string|min:10|max:255',
-            'rating' => 'required|integer|lte:5',
+            'comment' => 'string|min:10|max:255',
+            'rating' => 'integer|lte:5',
         ];
     }
 }

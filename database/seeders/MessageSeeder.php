@@ -21,35 +21,35 @@ class MessageSeeder extends Seeder
                 'task_id' => 1,
                 'message' => 'Задавайте свои вопросы по поводу работы сюда.',
                 'created_at' => now(),
-
+                'read_at' => null,
             ],
             [
                 'user_id' => 4,
                 'task_id' => 1,
                 'message' => 'Привет!',
                 'created_at' => now(),
-
+                'read_at' => null,
             ],
             [
                 'user_id' => 1,
                 'task_id' => 1,
                 'message' => 'Пишите кратко и по делу.',
                 'created_at' => now(),
-
+                'read_at' => null,
             ],
             [
                 'user_id' => 4,
                 'task_id' => 1,
                 'message' => 'Можно ли работать удалённо?',
                 'created_at' => now(),
-
+                'read_at' => null,
             ],
             [
                 'user_id' => 1,
                 'task_id' => 1,
                 'message' => 'Здравствуйте, да, можно.',
                 'created_at' => now(),
-
+                'read_at' => null,
             ],
         ];
 

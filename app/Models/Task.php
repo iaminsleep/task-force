@@ -10,6 +10,8 @@ use App\Models\City;
 use App\Models\User;
 use App\Models\Response;
 use App\Models\File;
+use App\Models\Status;
+use App\Models\Message;
 
 class Task extends Model
 {
@@ -47,11 +49,23 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function performer() {
+        return $this->belongsTo(User::class, 'performer_id');
+    }
+
     public function responses() {
         return $this->hasMany(Response::class);
     }
 
     public function files() {
         return $this->hasMany(File::class);
+    }
+
+    public function status() {
+        return $this->belongsTo(Status::class);
+    }
+
+    public function messages() {
+        return $this->hasMany(Message::class);
     }
 }

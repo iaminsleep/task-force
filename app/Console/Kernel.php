@@ -5,8 +5,6 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
-use App\Http\Services\ClearTmpFolder;
-
 class Kernel extends ConsoleKernel
 {
     /**
@@ -17,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(new ClearTmpFolder)->hourly();
+        $schedule->call('\App\Http\Services\ClearTmpFolder')->everyMinute();
+        $schedule->call('\App\Http\Services\UpdateTasksStatus')->everyMinute();
     }
 
     /**

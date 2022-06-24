@@ -29,6 +29,7 @@ class SendMessageController extends Controller
                     'message' => $request['message'],
                     'task_id' => $taskId,
                     'user_id' => auth()->user()->id,
+                    'created_at' => now(),
                 ]);
 
                 $interlocutorId = auth()->user()->id === $task->user_id

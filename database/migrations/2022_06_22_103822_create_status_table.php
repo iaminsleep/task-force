@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->integer('task_id')->unsigned();
-            $table->text('message');
-            $table->timestamp('created_at');
-            $table->timestamp('read_at')->nullable();
+            $table->string('name');
+            $table->string('alias');
         });
 
         Artisan::call('db:seed', [
-            '--class' => MessageSeeder::class
+            '--class' => StatusSeeder::class
         ]);
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('status');
     }
 };
