@@ -40,7 +40,7 @@ class UsersPageController extends Controller
             ],
         ];
 
-        return view('users', [
+        return view('performers.index', [
             'users' => $users,
             'main_filters' => $main_filters,
             'optional_filters' => $optional_filters

@@ -11,9 +11,9 @@ class UserPageController extends Controller
     {
         $user = User::findOrFail($id);
         $receivedFeedbacks = $user->received_feedbacks;
-        $completedTasksCount = Task::where('performer_id', $user->id)->where('status', 2)->count();
+        $completedTasksCount = Task::where('performer_id', $user->id)->where('status_id', 2)->count();
 
-        return view('user-profile', [
+        return view('profile.index', [
             'user' => $user,
             'receivedFeedbacks' => $receivedFeedbacks,
             'completedTasksCount' => $completedTasksCount

@@ -19,6 +19,6 @@ class SearchUserController extends Controller
             $users = $users->paginate(4);
         }
 
-        return view('search-user', ['users' => $users]);
+        return view('search-user.index', ['users' => $users]);
     }
 }

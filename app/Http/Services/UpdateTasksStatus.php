@@ -8,7 +8,7 @@ class UpdateTasksStatus
 {
     public function __invoke()
     {
-        Task::whereNull('status_id')
+        Task::where('status_id', 1)
             ->whereDate('deadline', '<', today())
             ->update(['status_id' => 4]);
 

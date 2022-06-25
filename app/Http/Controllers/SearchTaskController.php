@@ -21,6 +21,6 @@ class SearchTaskController extends Controller
             $tasks = $tasks->paginate(4);
         }
 
-        return view('search-task', ['tasks' => $tasks]);
+        return view('search-task.index', ['tasks' => $tasks]);
     }
 }

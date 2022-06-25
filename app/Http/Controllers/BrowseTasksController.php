@@ -36,7 +36,7 @@ class BrowseTasksController extends Controller
             ],
         ];
 
-        return view('browse', [
+        return view('browse.index', [
             'tasks' => $tasks,
             'optional_filters' => $optional_filters,
             'time_filters' => $time_filters,

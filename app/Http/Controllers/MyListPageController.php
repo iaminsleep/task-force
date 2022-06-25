@@ -16,6 +16,6 @@ class MyListPageController extends Controller
             ? Task::where('user_id', auth()->user()->id)->orWhere('performer_id', auth()->user()->id)->get()
             : $service->execute()->get();
 
-        return view('mylist', [ 'tasks' => $tasks ]);
+        return view('mylist.index', [ 'tasks' => $tasks ]);
     }
 }

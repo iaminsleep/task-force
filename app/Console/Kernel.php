@@ -15,8 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call('\App\Http\Services\ClearTmpFolder')->everyMinute();
-        $schedule->call('\App\Http\Services\UpdateTasksStatus')->everyMinute();
+        $schedule->call('\App\Http\Services\ClearTmpFolder')->hourly();
+        $schedule->call('\App\Http\Services\UpdateTasksStatus')->daily();
     }
 
     /**

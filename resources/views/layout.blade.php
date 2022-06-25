@@ -23,7 +23,7 @@
         @yield('page-content')
       </main>
       @guest
-          @include('auth.signin')
+          @include('login.index')
       @endguest
       <x-footer></x-footer>
       <div class="overlay"></div>

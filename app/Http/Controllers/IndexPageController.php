@@ -12,6 +12,6 @@ class IndexPageController extends Controller
     {
         $tasks = Task::withCount('responses')->orderBy('responses_count', 'DESC')->take(4)->get();
 
-        return view('landing', [ 'tasks' => $tasks ]);
+        return view('landing.index', [ 'tasks' => $tasks ]);
     }
 }

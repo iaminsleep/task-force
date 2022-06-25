@@ -37,6 +37,6 @@ class CreatePageController extends Controller
             ],
         ];
 
-        return view('create', [ 'errors_array' => $errors_array ]);
+        return view('create.index', [ 'errors_array' => $errors_array ]);
     }
 }

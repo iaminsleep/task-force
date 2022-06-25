@@ -71,10 +71,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     Route::group(['middleware' => ['guest']], function() {
 
-        Route::view('/signup', 'auth.signup')->name('register.page');
+        Route::view('/signup', 'register.index')->name('register.page');
         Route::post('/signup', 'RegisterController')->name('register.perform');
 
-        Route::view('/signin', 'auth.signin')->name('login.page');
         Route::post('/signin', 'LoginController')->name('login.perform');
 
     });

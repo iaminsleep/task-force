@@ -29,7 +29,7 @@ class TaskPageController extends Controller
 
         $performer = User::whereId($task->performer_id)->first() ?? null;
 
-        return view('task-page',
+        return view('task.index',
         [
             'task' => $task,
             'deadline' => $deadline,
