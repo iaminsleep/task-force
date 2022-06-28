@@ -23,7 +23,7 @@
         </div>
         @auth
             <div class="feedback-card__actions">
-                @if (auth()->user()->id === $response->task->user_id && !$response->task->performer_id)
+                @if ($response->task->status->id === 1 && auth()->user()->id === $response->task->user_id && !$response->task->performer_id)
                     <form action="{{ route('response.accept', ['responseId' => $response->id]) }}" method="post">
                         @method('PUT')
                         <button class="button__small-color request-button button" type="submit">
@@ -38,7 +38,7 @@
                         </button>
                         @csrf
                     </form>
-                @elseif(auth()->user()->id === $response->user_id && auth()->user()->id !== $response->task->performer_id)
+                @elseif($response->task->status->id === 1 && auth()->user()->id === $response->user_id && auth()->user()->id !== $response->task->performer_id)
                     <form action="{{ route('response.delete', ['responseId' => $response->id]) }}" method="post">
                         @method('DELETE')
                         <button class="button__small-color refusal-button button" type="submit">

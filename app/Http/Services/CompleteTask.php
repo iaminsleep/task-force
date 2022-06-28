@@ -29,12 +29,14 @@ class CompleteTask {
 
         $user->rating = $newRating;
 
-        $user->notify(new UserNotification([
-            "message" => 'Завершено задание',
-            "task_name" => $task->title,
-            'task_id' => $task->id,
-            "type" => 'close',
-        ]));
+        if(in_array(2, json_decode($user->notification_settings, true))) {
+            $user->notify(new UserNotification([
+                "message" => 'Завершено задание',
+                "task_name" => $task->title,
+                'task_id' => $task->id,
+                "type" => 'close',
+            ]));
+        }
 
         $user->save();
     }

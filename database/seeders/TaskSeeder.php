@@ -27,6 +27,7 @@ class TaskSeeder extends Seeder
                 'budget' => 35000,
                 'performer_id' => 4,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -40,6 +41,7 @@ class TaskSeeder extends Seeder
                 'budget' => 3500,
                 'performer_id' => 3,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -53,6 +55,7 @@ class TaskSeeder extends Seeder
                 'budget' => 4000,
                 'performer_id' => 2,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -66,6 +69,7 @@ class TaskSeeder extends Seeder
                 'budget' => 1700,
                 'performer_id' => 1,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -79,6 +83,7 @@ class TaskSeeder extends Seeder
                 'budget' => 4500,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(604800), //7 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -92,6 +97,7 @@ class TaskSeeder extends Seeder
                 'budget' => 10000,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(604800), //7 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -105,6 +111,7 @@ class TaskSeeder extends Seeder
                 'budget' => 6000,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(432000), //5 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -118,6 +125,7 @@ class TaskSeeder extends Seeder
                 'budget' => 1900,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(259200), //3 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -131,6 +139,7 @@ class TaskSeeder extends Seeder
                 'budget' => 800,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -144,6 +153,7 @@ class TaskSeeder extends Seeder
                 'budget' => 19000,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -157,6 +167,7 @@ class TaskSeeder extends Seeder
                 'budget' => 3400,
                 'performer_id' => null,
                 'deadline' => now()->addSeconds(172800), //2 days
+                'status_id' => 1,
                 'created_at' => now(),
             ],
             [
@@ -168,8 +179,9 @@ class TaskSeeder extends Seeder
                 'user_id' => 5,
                 'location' => 'Улица Адмирала Кузнецова, 92',
                 'budget' => 8100,
-                'performer_id' => null,
+                'performer_id' => 1,
                 'deadline' => now()->addSeconds(2592000), //30 days
+                'status_id' => 2,
                 'created_at' => now(),
             ],
             [
@@ -181,8 +193,9 @@ class TaskSeeder extends Seeder
                 'user_id' => 6,
                 'location' => 'Улица Героев Рыбачьего, 9',
                 'budget' => 4480,
-                'performer_id' => null,
+                'performer_id' => 2,
                 'deadline' => now()->addSeconds(432000), //5 days
+                'status_id' => 3,
                 'created_at' => now(),
             ],
             [
@@ -194,8 +207,9 @@ class TaskSeeder extends Seeder
                 'user_id' => 7,
                 'location' => 'Улица Вересаева, 101/3 с 1',
                 'budget' => 12200,
-                'performer_id' => null,
+                'performer_id' => 3,
                 'deadline' => now()->addSeconds(259200), //3 days
+                'status_id' => 2,
                 'created_at' => now(),
             ],
             [
@@ -207,8 +221,9 @@ class TaskSeeder extends Seeder
                 'user_id' => 4,
                 'location' => 'Отрадный переулок, 19 Б',
                 'budget' => 3850,
-                'performer_id' => null,
+                'performer_id' => 6,
                 'deadline' => now()->addSeconds(86400), //1 day
+                'status_id' => 2,
                 'created_at' => now(),
             ],
         ];

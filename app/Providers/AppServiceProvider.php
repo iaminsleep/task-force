@@ -38,8 +38,13 @@ class AppServiceProvider extends ServiceProvider
         if(!app()->runningInConsole()) {
             Paginator::useBootstrap();
 
-            $categories = Category::all()->sortBy('id');
-            $cities = City::all()->sortBy('id');
+            $categories = cache()->remember('categories', 60*60*24, function() {
+                return Category::all()->sortBy('id');
+            });
+
+            $cities = cache()->remember('cities', 60*60*24, function() {
+                return City::all()->sortBy('id');
+            });
 
             $timezone = $_COOKIE['timezone'] ?? config('timezone');
 

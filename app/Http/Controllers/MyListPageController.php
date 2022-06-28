@@ -13,7 +13,16 @@ class MyListPageController extends Controller
     public function __invoke(FilterProfileTasksService $service)
     {
         $tasks = !count(request()->all())
-            ? Task::where('user_id', auth()->user()->id)->orWhere('performer_id', auth()->user()->id)->get()
+            ? Task::where('user_id', auth()->user()->id)
+            ->orWhere('performer_id', auth()->user()->id)
+            ->select([
+                'id',
+                'title',
+                'description',
+                'category_id',
+                'performer_id',
+                'status_id',
+            ])->get()
             : $service->execute()->get();
 
         return view('mylist.index', [ 'tasks' => $tasks ]);

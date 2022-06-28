@@ -31,9 +31,10 @@ class ChangeSettingsRequest extends FormRequest
             'birth_date' => 'nullable|date|before:-18 years',
             'description' => 'nullable|string|max:1000',
             'specialization' => 'nullable|array',
-            'phone' => 'nullable|integer',
+            'phone' => 'nullable|string',
             'skype' => 'nullable|string|max:30',
-            'avatar' => 'nullable|max:10000|mimes:jpg,jpeg,png'
+            'avatar' => 'nullable|max:10000|mimes:jpg,jpeg,png',
+            'notification_settings' => 'nullable',
         ];
     }
 

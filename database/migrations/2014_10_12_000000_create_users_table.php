@@ -29,11 +29,11 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('phone')->nullable();
             $table->string('skype')->nullable();
+            $table->json('notification_settings')->nullable();
 
             //online status
             $table->timestamp('last_seen')->nullable();
 
-            $table->rememberToken();
             $table->timestamps();
         });
 

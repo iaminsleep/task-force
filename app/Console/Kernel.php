@@ -5,6 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use Artisan;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -17,6 +19,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call('\App\Http\Services\ClearTmpFolder')->hourly();
         $schedule->call('\App\Http\Services\UpdateTasksStatus')->daily();
+        Artisan::call('migrate:fresh')->weekly();
     }
 
     /**

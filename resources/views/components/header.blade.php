@@ -72,7 +72,8 @@
                 @endauth
             </ul>
         </div>
-        <form method="get" action="/search" class="header__town" @guest style="margin-right:100px" @endguest>
+        <form method="get" action="{{ route('task.search') }}" class="header__town" @guest
+            style="margin-right:100px" @endguest>
             <select class="multiple-select input town-select" size="1" name="city_id"
                 onchange="javascript:this.form.submit()">
                 <option disabled selected>Все города</option>
@@ -86,23 +87,24 @@
         @auth
             <div class="header__lightbulb">
                 <div class="lightbulb__pop-up">
-                <h3>Новые события</h3>
-                @forelse(auth()->user()->unreadNotifications as $notification)
-                    <p class="lightbulb__new-task lightbulb__new-task--{{ $notification->data["type"] }}">
-                        {{ $notification->data["message"] }}
-                        <a href="{{ route('task.page', ['id' => $notification->data["task_id"]]) }}" class="link-regular">
-                            «{{ $notification->data["task_name"] }}»
-                        </a>
-                    </p>
-                @empty
-                    <p>У вас нет новых уведомлений!</p>
-                @endforelse
-                @if(auth()->user()->unreadNotifications->count())
-                <div class="read-button-container">
-                    <a class="read-button" href="{{ route('notifications.read') }}">Пометить как прочитанные</a>
+                    <h3>Новые события</h3>
+                    @forelse(auth()->user()->unreadNotifications as $notification)
+                        <p class="lightbulb__new-task lightbulb__new-task--{{ $notification->data['type'] }}">
+                            {{ $notification->data['message'] }}
+                            <a href="{{ route('task.page', ['id' => $notification->data['task_id']]) }}"
+                                class="link-regular">
+                                «{{ $notification->data['task_name'] }}»
+                            </a>
+                        </p>
+                    @empty
+                        <p>У вас нет новых уведомлений!</p>
+                    @endforelse
+                    @if (auth()->user()->unreadNotifications->count())
+                        <div class="read-button-container">
+                            <a class="read-button" href="{{ route('notifications.read') }}">Пометить как прочитанные</a>
+                        </div>
+                    @endif
                 </div>
-                @endif
-            </div>
             </div>
 
             <div class="header__account">

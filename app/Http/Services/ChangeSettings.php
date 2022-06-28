@@ -12,6 +12,9 @@ class ChangeSettings {
   public function execute(array $data) {
     $user = auth()->user();
 
+    if(!array_key_exists('specialization', $data)) $data['specialization'] = json_encode([]);
+    if(!array_key_exists('notification_settings', $data)) $data['notification_settings'] = json_encode([]);
+
     if(isset($data['avatar'])) {
         $avatarName = $user->id.'_avatar'.time().'.'.$data['avatar']->getClientOriginalExtension();
 

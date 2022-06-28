@@ -92,9 +92,9 @@ footer {
   margin: 0 auto; }
 
 .page-main {
-  background-color: #f1f2f6;
-  padding-top: 40px;
-  padding-bottom: 40px;
+background-color: #f1f2f6;
+    padding-top: 50px;
+    padding-bottom: 100px;
   height: 100%; }
 
 .page-header__container {
@@ -259,6 +259,16 @@ position: absolute;
 
 .lightbulb__new-task--close::before {
   background-image: url("../img/close-pop-up.png");
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.lightbulb__new-task--refuse::before {
+  background-image: url("../img/refuse-pop-up.png");
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.lightbulb__new-task--response::before {
+  background-image: url("../img/response-pop-up.png");
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -1802,6 +1812,22 @@ position: absolute;
 
 .expired-status {
   background-color: #2639e2;
+}
+
+.active-status-text {
+  color: #00b894;
+}
+
+.completed-status-text {
+  color: #ff754b;
+}
+
+.cancelled-status-text {
+  color: #e22626;
+}
+
+.expired-status-text {
+  color: #2639e2;
 }
 
 .no-performer {

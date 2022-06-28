@@ -38,6 +38,7 @@ class User extends Eloquent implements Authenticatable
         'specialization',
         'phone',
         'skype',
+        'notification_settings',
     ];
 
     /**
@@ -47,7 +48,6 @@ class User extends Eloquent implements Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -67,7 +67,9 @@ class User extends Eloquent implements Authenticatable
     */
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value); //automatically bcrypts the password on register
+        if($value != "") {
+            $this->attributes['password'] = bcrypt($value); //automatically bcrypts the password on register
+        }
     }
 
     public function tasks() {

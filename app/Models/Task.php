@@ -50,7 +50,12 @@ class Task extends Model
     }
 
     public function performer() {
-        return $this->belongsTo(User::class, 'performer_id');
+        return $this->belongsTo(User::class, 'performer_id')->select([
+            'id',
+            'name',
+            'avatar',
+            'rating',
+        ]);
     }
 
     public function responses() {

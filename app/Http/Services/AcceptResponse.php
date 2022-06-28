@@ -18,17 +18,19 @@ class AcceptResponse {
             'budget' => $response->payment
         ])->save();
 
-        foreach($task->responses as $response) {
-            $response->user->notify(new UserNotification([
-                "message" => 'Выбран исполнитель для',
-                "task_name" => $task->title,
-                'task_id' => $task->id,
-                "type" => 'executor',
-            ]));
-        }
-
         $deleteResponse = new DeleteResponse;
         $deleteResponse->execute($response);
+
+        foreach($task->responses as $response) {
+            if(in_array(2, json_decode($response->user->notification_settings, true))) {
+                $response->user->notify(new UserNotification([
+                    "message" => 'Выбран исполнитель для',
+                    "task_name" => $task->title,
+                    'task_id' => $task->id,
+                    "type" => 'executor',
+                ]));
+            }
+        }
 
         return true;
     }

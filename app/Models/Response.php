@@ -27,10 +27,19 @@ class Response extends Model
     ];
 
     public function task() {
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Task::class)->select([
+            'id',
+            'status_id',
+            'performer_id',
+        ]);
     }
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->select([
+            'id',
+            'name',
+            'avatar',
+            'rating',
+        ]);
     }
 }

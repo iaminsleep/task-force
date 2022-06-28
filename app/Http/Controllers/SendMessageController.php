@@ -36,12 +36,15 @@ class SendMessageController extends Controller
                     ? $task->performer_id
                     : $task->user_id;
 
-                User::find($interlocutorId)->notify(new UserNotification([
-                    'message' => 'Новое сообщение в чате',
-                    'task_name' => $task->title,
-                    'task_id' => $task->id,
-                    'type' => 'message',
-                ]));
+                $interlocutor = User::find($interlocutorId);
+                if(in_array(1, json_decode($interlocutor->notification_settings, true))) {
+                    $interlocutor->notify(new UserNotification([
+                        'message' => 'Новое сообщение в чате',
+                        'task_name' => $task->title,
+                        'task_id' => $task->id,
+                        'type' => 'message',
+                    ]));
+                }
 
                 return response($message, 201);
             }

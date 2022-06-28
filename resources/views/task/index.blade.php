@@ -12,7 +12,7 @@
 
 @section('scripts')
     {{-- Yandex Maps --}}
-    @if($coordinates !== null)
+    @if ($coordinates !== null)
         @include('task.ymaps')
     @endif
 
@@ -24,7 +24,7 @@
 @endsection
 
 @section('page-content')
-    <div class="main-container page-container">
+    <div class="main-container page-container" @if ($task->status->id !== 1 && $task->status->id !== 4) style="opacity: 0.7" @endif>
         <section class="content-view">
             <div class="content-view__card">
                 @include('task.partials.info-general')
@@ -33,13 +33,13 @@
             @include('task.partials.feedbacks')
         </section>
         <section class="connect-desk">
+            @include('task.partials.status-overview')
             @include('task.partials.customer-overview')
-            @if($task->performer_id)
+            @if ($task->performer_id)
                 @include('task.partials.performer-overview')
             @endif
             @auth
-                @if($task->performer_id && ($task->performer_id === auth()->user()->id
-                || $task->user_id === auth()->user()->id))
+                @if ($task->status->id === 1 && $task->performer_id && ($task->performer_id === auth()->user()->id || $task->user_id === auth()->user()->id))
                     @include('task.section-messenger')
                 @endif
             @endauth

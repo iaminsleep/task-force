@@ -9,6 +9,5 @@
     </div>
     <div class="user__card-general-information">
         @include('profile.partials.additional-information')
-        @include('profile.partials.photo-of-works')
     </div>
 </div>

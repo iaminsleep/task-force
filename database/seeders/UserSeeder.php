@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["0", "1", "2"]',
                 'birth_date' => '2000-11-13',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
             [
@@ -47,6 +48,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["3", "4"]',
                 'birth_date' => '1990-02-06',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
             [
@@ -63,6 +65,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["6", "7"]',
                 'birth_date' => '1995-09-09',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
             [
@@ -79,6 +82,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["4", "5"]',
                 'birth_date' => '1989-12-11',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
             [
@@ -95,6 +99,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["8", "0", "1"]',
                 'birth_date' => '2001-03-25',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
             [
@@ -111,6 +116,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["4", "0", "2"]',
                 'birth_date' => '1998-06-19',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
             [
@@ -127,6 +133,7 @@ class UserSeeder extends Seeder
                 'specialization' => '["5"]',
                 'birth_date' => '1997-07-18',
                 'last_seen' => Carbon::now()->toDateTimeString(),
+                'notification_settings' => json_encode(['1', '2', '3']),
                 'created_at' => today(),
             ],
         ];

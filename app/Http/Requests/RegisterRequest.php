@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      *
      * @var string
      */
-   
+
 
     /**
      * Determine if the user is authorized to make this request.
@@ -36,6 +36,7 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email:rfc,dns|unique:users,email',
             'city_id' => 'required',
             'name' => 'required|min:3|max:35',
+            'notification_settings' => 'required',
             'password' => 'required|min:8|max:25|confirmed',
             'password_confirmation' => 'required'
         ];

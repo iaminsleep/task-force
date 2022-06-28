@@ -8,7 +8,15 @@ class UsersPageController extends Controller
 {
     public function __invoke()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(4);
+        $users = User::orderBy('id', 'ASC')->select([
+            'id',
+            'name',
+            'avatar',
+            'description',
+            'rating',
+            'specialization',
+            'last_seen'
+        ])->paginate(4);
 
         $main_filters = [
             [

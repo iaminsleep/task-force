@@ -27,7 +27,12 @@ class TaskPageController extends Controller
 
         $task_amount = $action->execute($task->user->tasks()->count());
 
-        $performer = User::whereId($task->performer_id)->first() ?? null;
+        $performer = User::whereId($task->performer_id)->select([
+            'id',
+            'name',
+            'avatar',
+            'rating',
+        ])->first() ?? null;
 
         return view('task.index',
         [

@@ -8,7 +8,18 @@ class BrowseTasksController extends Controller
 {
     public function __invoke()
     {
-        $tasks = Task::orderBy('created_at', 'DESC')->paginate(4);
+        $tasks = Task::orderBy('status_id', 'ASC')
+            ->orderBy('created_at', 'DESC')
+            ->select([
+                'id',
+                'title',
+                'description',
+                'category_id',
+                'city_id',
+                'location',
+                'budget',
+                'created_at'
+            ])->paginate(4);
 
         $optional_filters = [
             [
