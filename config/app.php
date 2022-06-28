@@ -183,7 +183,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         //imported through composer
         Yandex\Geocode\YandexGeocodeServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
         /*
