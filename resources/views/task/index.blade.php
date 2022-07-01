@@ -20,7 +20,7 @@
     <script type="text/javascript">
         var authUserId = @json(auth()->user()->id ?? null); //pass authenticated user id to the messenger script
     </script>
-    <script src="/public/js/messenger.js"></script>
+    <script src="/js/messenger.js"></script>
 @endsection
 
 @section('page-content')

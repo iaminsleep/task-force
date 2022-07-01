@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <title>@yield('title')</title>
   @yield('head')
-  <link rel="stylesheet" href="/public/css/normalize.css"/>
-  <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/css/normalize.css"/>
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" href="/img/taskforce-icon.png"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data.js"></script>
-  <script src="/public/js/timezone.js" defer></script>
-  <script src="/public/js/main.js" defer></script>
+  <script src="/js/timezone.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </head>
 <body class="@yield('body-class')">
     <div class="table-layout">

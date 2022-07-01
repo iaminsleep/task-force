@@ -11,7 +11,7 @@
 
 @section('scripts')
     {{-- Dropzone Script Import --}}
-    <script src="js/dropzone.js"></script>
+    <script src="/js/dropzone.js"></script>
     {{-- Dropzone Settings --}}
     @include('create.dropzone')
 @endsection
