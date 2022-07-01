@@ -33,11 +33,13 @@
             </span>
         @endif
     </div>
-    <div class="link-specialization user__search-link--bottom">
-        @foreach (json_decode($user->specialization, true) as $specialization)
-            <a href="/search-user?specialization_id={{ $specialization }}" class="link-regular">
-                {{ $categories->toArray()[$specialization]['name'] }}
-            </a>
-        @endforeach
-    </div>
+    @if ($user->specialization)
+        <div class="link-specialization user__search-link--bottom">
+            @foreach (json_decode($user->specialization, true) as $specialization)
+                <a href="/search-user?specialization_id={{ $specialization }}" class="link-regular">
+                    {{ $categories->toArray()[$specialization]['name'] }}
+                </a>
+            @endforeach
+        </div>
+    @endif
 </div>

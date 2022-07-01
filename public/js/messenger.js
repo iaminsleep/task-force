@@ -21,7 +21,7 @@ Vue.component('chat', {
       console.error("Не передан идентификатор задания (атрибут task) в теге 'chat'")
     }
     else {
-      this.api_url = 'http://taskforce/messages/' + this.task;
+      this.api_url = 'http://taskforce-github.herokuapp.com/messages' + this.task;
       this.getMessages();
     }
   },
