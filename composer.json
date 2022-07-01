@@ -11,7 +11,8 @@
         "jackmartin/laravel-yandex-geocode": "^1.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "spatie/laravel-remote": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
