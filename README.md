@@ -1,26 +1,26 @@
-# Cервис для поиска исполнителей на разовые задачи «TaskForce»
+# Service for finding performers for one-time tasks "TaskForce"
 
-Проект от HTML Academy (вёрстка), функционал которого был реализован с помощью php-фреймворка Laravel
+A project from the HTML Academy (layout), the functionality of which was implemented using the Laravel php framework
 
-## Кратко о функционале
+## Briefly about the functionality
 
-Пользователь (заказчик) создаёт задание и назначает на него свою цену за выполнение, другие пользователи (исполнители) могут откликнуться и назначить свою цену. Внимательно изучив каждый отклик, заказчик выбирает исполнителя на эту задачу. Они обсуждают все детали и вопросы с помощью мессенджера. В любое время пользователь может отказаться от выполнения задачи, при этом его рейтинг будет снижен. В случае выполнения заказчик закрывает задание и оценивает качество работы исполнителя, от его оценки и будет зависеть текущий рейтинг исполнителя.
+The user (customer) creates a task and assigns his price for the completion, other users (performers) can respond and suggest their price. After studying each response, the customer chooses a performer for this task. They can discuss all the details and questions via messenger. At any time, the user can refuse to complete the task, but his rating will be lowered. In case of the successfull task completion, the customer closes the task and evaluates the quality of the performer's work, and the current rating of the performer will be affected positively or negatively.
 
-## Особенности
+## Features
 
-- возможность создать задание и назначить исполнителя
-- встроенный мессенджер к каждому заданию (появляется когда назначают исполнителя)
-- система уведомлений
-- обширный фильтр заданий и пользователей
-- у каждого пользователя есть свой рейтинг
-- 4 вида статусов у задания - "Активно", "Завершено", "Отменено", "Просрочено"
-- возможность прикрепления файлов к заданию и их скачивания из сервера
-- настройка пользователя, возможность добавления доп. данных или отключения уведомлений по желанию
-- система онлайн статуса у пользователей
-- возможность добавления пользователя в избранное
-- подключение Яндекс.Карт на странице тех заданий, где указан адрес
+- ability to create a task and assign a performer
+- built-in messenger for each task (appears when a performer is assigned)
+- notification system
+- extensive filter of tasks and users
+- each user has their own rating
+- 4 types of task statuses - "Active", "Completed", "Canceled", "Expired"
+- the ability to attach files to the task and download them from the server
+- user settings, the ability to add additional data or disable notifications
+- online status system for users
+- the ability to add a user to favorites
+- use of Yandex Maps on the page of those tasks where the address is specified
 
-## Технологии
+## Technologies
 
 - Laravel 8
 - MySQL
@@ -29,7 +29,12 @@
 - css
 - js
 
-## Хостинг
+## How to launch the project
+1. Download OpenServer
+2. Download project and extract the zip archive inside OpenServer's 'domains' folder
+3. Launch OpenServer and the project
 
-Сервис размещён на хостинге от Heroku<br>
+## Hosting
+
+The service is hosted by Heroku</br>
 http://taskforce-github.herokuapp.com/
