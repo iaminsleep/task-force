@@ -25,7 +25,6 @@ The user (customer) creates a task and assigns his price for the completion, oth
 - Laravel 8
 - MySQL
 - VueJS
-- html
 - css
 - js
 
